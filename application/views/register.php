@@ -19,29 +19,30 @@
         <div class="loginBox">
         <img src="<?php echo base_url('static/css/user.png') ?>" class="user">
         <h2>UNAP-BIBLIO REGISTRARSE</h2>
-        <form>
+        <form role="form" method="post" action="<?php echo base_url('user/register_user'); ?>">
           <center>
           <main>
             <aside id="left">
               <p>Email</p>
-              <input type="text" name = "" placeholder="email@gmail.com">
+              <input type="text" name = "usua_email" placeholder="email@gmail.com">
               <p>Password</p>
-              <input type="password" name = "" placeholder="*********">
+              <input type="password" name = "usua_password" placeholder="*********">
               <p>Codigo</p>
-              <input type="text" name="" placeholder="Codigo">
+              <input type="text" name="usua_codigo" placeholder="Codigo">
               <p>Nombres</p>
-              <input type="text" name="" placeholder="Nombres">
+              <input type="text" name="usua_nombre" placeholder="Nombres">
             </aside>
             <article></article>
             <aside id="right">
               <p>Apellidos</p>
-              <input type="text" name="" placeholder="Apellidos">
+              <input type="text" name="usua_apellidos" placeholder="Apellidos">
               <p>Direccion</p>
-              <input type="text" name="" placeholder="Direccion">
+              <input type="text" name="usua_direccion" placeholder="Direccion">
               <p>Telefono</p>
-              <input type="text" name="" placeholder="Telefono">
+              <input type="text" name="usua_telefono" placeholder="Telefono">
             </aside>
             </main>
+          </form>
             <header>
               <section id="banner">
                 <a href="<?php echo base_url('user/login_volverLogin') ?>">Ya tengo una cuenta</a>  
@@ -51,7 +52,7 @@
               </section>
             </header> 
           </center>
-        </form>
+        
       </div>
   </body>
 </html>

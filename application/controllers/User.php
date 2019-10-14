@@ -2,20 +2,17 @@
 
 class User extends CI_Controller {
 
-public function __construct(){
-
-        parent::__construct();
-  			$this->load->helper('url');
-  	 		$this->load->model('user_model');
+public function __construct()
+{
+    parent::__construct();
+        $this->load->helper('url');
+        $this->load->model('user_model');
         $this->load->library('session');
-
 }
-
 public function index()
 {
-$this->load->view("login.php"); //Aqui es tu funcion principal para que se vea al inicio cuando ingresas a la carpeta
+$this->load->view("login.php");
 }
-
 public function register_user(){
 
       $user=array(
@@ -26,8 +23,8 @@ public function register_user(){
       'usua_email'=>$this->input->post('usua_email'),
       'usua_telefono'=>$this->input->post('usua_telefono'),
       'usua_password'=>md5($this->input->post('usua_password')),
-
-      'user_mobile'=>$this->input->post('user_mobile')
+    
+      
         );
         print_r($user);
 
@@ -42,7 +39,8 @@ if($email_check){
 else{
 
   $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-  redirect('user');
+  redirect('usuario');
+
 
 }
 
@@ -50,34 +48,38 @@ else{
 
 public function login_view(){
 
-$this->load->view("register.php");
+$this->load->view("login.php");
 
 }
-//Funcion para linkear
+
+//FUNCIONES PARA LINKEAR LOGIN: 
 function login_irRegistro(){
   $this->load->view("register.php");
 }
 
 function login_volverLogin(){
-  $this->load->view("login.php"); 
-} 
+  $this->load->view("login.php");
+}
 
-function looogin_user(){ 
+
+function login_user(){
   $user_login=array(
 
-  'user_email'=>$this->input->post('user_email'),
-  'user_password'=>md5($this->input->post('user_password'))
-
+  'usua_email'=>$this->input->post('usua_email'),
+  'usua_password'=>md5($this->input->post('usua_password')),
     );
 
-    $data=$this->user_model->login_user($user_login['user_email'],$user_login['user_password']);
+    $data=$this->user_model->login_user($user_login['usua_email'],$user_login['usua_password']);
       if($data)
-      {
-        $this->session->set_userdata('usua_id',$data['user_id']);
-        $this->session->set_userdata('user_email',$data['user_email']);
-        $this->session->set_userdata('user_name',$data['user_name']);
-        $this->session->set_userdata('user_age',$data['user_age']);
-        $this->session->set_userdata('user_mobile',$data['user_mobile']);
+    {
+        $this->session->set_userdata('usua_id',$data['usua_id']);
+        $this->session->set_userdata('usua_codigo',$data['usua_codigo']);
+        $this->session->set_userdata('usua_nombres',$data['usua_nombres']);
+        $this->session->set_userdata('usua_apellidos',$data['usua_apellidos']);
+        $this->session->set_userdata('usua_direccion',$data['usua_direccion']);
+        $this->session->set_userdata('usua_email',$data['usua_email']);
+        $this->session->set_userdata('usua_telefono',$data['usua_telefono']);
+        $this->session->set_userdata('usua_password',$data['usua_password']);
 
         $this->load->view('user_profile.php');
 
@@ -87,6 +89,8 @@ function looogin_user(){
         $this->load->view("login.php");
 
       }
+
+
 }
 
 function user_profile(){
