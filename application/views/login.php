@@ -1,32 +1,42 @@
-<!DOCTYPE html>
-<html>
-  
-<head>
-    <title>UNAP-BIBLIO REGISTRO</title>
+
      <!--Nuestro css-->
      <link rel="stylesheet" href="<?php echo base_url('static/css/login.css')?>" /> 
 
-</head>
-<body>
-
-                <!--  <?php
-                  $error_msg=$this->session->flashdata('error_msg');
-                  if($error_msg){
-                    echo $error_msg;
-                  }
-                  ?>-->
 
     <header>
       <section id="banner">
+        <?php
+              $success_msg= $this->session->flashdata('success_msg');
+              $error_msg= $this->session->flashdata('error_msg');
+
+                  if($success_msg){
+                    ?>
+                    <div class="alert alert-success">
+                      <?php echo $success_msg; ?>
+                    </div>
+                  <?php
+                  }
+                  if($error_msg){
+                    ?>
+                    <div class="alert alert-danger">
+                      <?php echo $error_msg; ?>
+                    </div>
+                    <?php
+                  }
+                  ?>
+
         <div class="loginBox">
         <img src="<?php echo base_url('static/css/user.png') ?>" class="user">
           <h2>UNAP-BIBLIO</h2>
-          <form>
+          <form role="form" method="post" action="<?php echo base_url('user/header'); ?>">
+            
             <p>Email</p>
             <input type="text" name = "" placeholder="email@gmail.com">
             <p>Password</p>
             <input type="password" name = "" placeholder="*********">
-            <input type="submit" name = "" value="Sign In">
+            <input type="submit"  value="Sign In">
+          
+            </form>
             <main>
               <aside id="left">
                 <!--Para linkear primero poner el nombre del controlador (user), despues poner el nombre de tu funcion controlador-->
@@ -37,7 +47,7 @@
                 <a href="">Olvide mi Contraseña</a>
               </aside>
             </main>
-          </form>
+          
         </div>
       </section>
       <section id="logo">

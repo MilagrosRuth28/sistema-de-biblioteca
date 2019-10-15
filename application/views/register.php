@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html>
-  
-<head>
-    <title>UNAP-BIBLIO REGISTRO</title>
+
      <!--Nuestro css-->
      <link rel="stylesheet" href="<?php echo base_url('static/css/loginRegistro.css')?>" /> 
 

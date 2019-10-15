@@ -1,9 +1,1 @@
 # sistema-de-biblioteca
-
-1RO.- DESCARGAR EL PROYECTO.
-2DO.- EJECUTAR LA BASE DE DATOS.
-3RO.- ENTRAR AL SISTEMA, EL USUARIO Y CONTRASEÑA SON:
-
-	EMAIL:			admin@admin.com	
-	CONTRASEÑA:		admin
-

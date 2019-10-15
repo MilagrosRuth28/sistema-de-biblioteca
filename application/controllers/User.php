@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends CI_Controller {
 
 public function __construct()
@@ -80,10 +80,9 @@ function login_user(){
         $this->session->set_userdata('usua_email',$data['usua_email']);
         $this->session->set_userdata('usua_telefono',$data['usua_telefono']);
         $this->session->set_userdata('usua_password',$data['usua_password']);
+        $this->load->view('header.php');
 
-        $this->load->view('user_profile.php');
-
-      }
+    }
       else{
         $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
         $this->load->view("login.php");
@@ -93,9 +92,9 @@ function login_user(){
 
 }
 
-function user_profile(){
+function header(){
 
-$this->load->view('user_profile.php');
+$this->load->view('header.php');
 
 }
 public function user_logout(){
@@ -103,7 +102,5 @@ public function user_logout(){
   $this->session->sess_destroy();
   redirect('user/login_view', 'refresh');
 }
-
 }
-
 ?>
