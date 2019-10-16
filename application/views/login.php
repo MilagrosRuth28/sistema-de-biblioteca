@@ -28,12 +28,12 @@
         <div class="loginBox">
         <img src="<?php echo base_url('static/css/user.png') ?>" class="user">
           <h2>UNAP-BIBLIO</h2>
-          <form role="form" method="post" action="<?php echo base_url('user/header'); ?>">
+          <form role="form" method="post" action="<?php echo base_url('user/login_user'); ?>">
             
             <p>Email</p>
-            <input type="text" name = "" placeholder="email@gmail.com">
+            <input type="text" name = "usua_email" placeholder="email@gmail.com">
             <p>Password</p>
-            <input type="password" name = "" placeholder="*********">
+            <input type="password" name = "usua_password" placeholder="*********">
             <input type="submit"  value="Sign In">
           
             </form>
