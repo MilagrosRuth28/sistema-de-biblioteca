@@ -38,5 +38,21 @@ $data['result'] = $this->Crud_model->getAllData();
         $this->Crud_model->deleteData($id);
         redirect("CrudController");
     }
+    public function cate(){
+    $data['data'] = $this->db->get("categoria")->result();
+    $this->load->view("header.php");
+    $this->load->view("categoria.php", $data);
+    
+  }
+  public function resultado(){
+    
+      $q=$_POST['q'];
+      $this->load->view('categoria.php');
+    
+    $data = $this->ModelCate->getBusqueda($q);
+    
+  
+}
+
 }
 ?>
