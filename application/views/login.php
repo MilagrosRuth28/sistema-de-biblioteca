@@ -5,7 +5,10 @@
 
     <header>
       <section id="banner">
-        <?php
+
+
+        <div class="loginBox">
+          <?php
               $success_msg= $this->session->flashdata('success_msg');
               $error_msg= $this->session->flashdata('error_msg');
 
@@ -24,16 +27,14 @@
                     <?php
                   }
                   ?>
-
-        <div class="loginBox">
         <img src="<?php echo base_url('static/css/user.png') ?>" class="user">
           <h2>UNAP-BIBLIO</h2>
-          <form role="form" method="post" action="<?php echo base_url('user/header'); ?>">
+          <form role="form" method="post" action="<?php echo base_url('user/menu'); ?>">
             
             <p>Email</p>
-            <input type="text" name = "" placeholder="">
+            <input type="text" name = "" placeholder="email@gmail.com">
             <p>Password</p>
-            <input type="password" name = "" placeholder="">
+            <input type="password" name = "" placeholder="*********">
             <input type="submit"  value="Sign In">
           
             </form>

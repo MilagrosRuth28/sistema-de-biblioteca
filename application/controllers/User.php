@@ -92,7 +92,7 @@ function login_user(){
 
 }
 
-function header(){
+public function menu(){
 
 $this->load->view('header.php');
 

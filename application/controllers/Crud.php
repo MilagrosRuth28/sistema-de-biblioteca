@@ -21,7 +21,7 @@ $data['result'] = $this->Crud_model->getAllData();
 }
     public function create() {
         $this->Crud_model->createData();
-        redirect("CrudController");
+        redirect("Crud");
     }
 
     public function edit($id) {
@@ -31,28 +31,12 @@ $data['result'] = $this->Crud_model->getAllData();
 
     public function update($id) {
         $this->Crud_model->updateData($id);
-        redirect("CrudController");
+        redirect("Crud");
     }
 
     public function delete($id) {
         $this->Crud_model->deleteData($id);
-        redirect("CrudController");
+        redirect("Crud");
     }
-    public function cate(){
-    $data['data'] = $this->db->get("categoria")->result();
-    $this->load->view("header.php");
-    $this->load->view("categoria.php", $data);
-    
-  }
-  public function resultado(){
-    
-      $q=$_POST['q'];
-      $this->load->view('categoria.php');
-    
-    $data = $this->ModelCate->getBusqueda($q);
-    
-  
-}
-
 }
 ?>
