@@ -76,7 +76,7 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo base_url(); ?>index.php/Crud" >
+        <a class="nav-link collapsed" href="<?php echo base_url(); ?>index.php/Autor" >
           <i class="far fa-id-badge"></i>
           <span>Autores</span>
         </a>
