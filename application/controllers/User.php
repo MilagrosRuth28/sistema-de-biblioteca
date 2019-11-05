@@ -73,12 +73,7 @@ function login_user(){
       if($data)
     {
         $this->session->set_userdata('usua_id',$data['usua_id']);
-        $this->session->set_userdata('usua_codigo',$data['usua_codigo']);
-        $this->session->set_userdata('usua_nombres',$data['usua_nombres']);
-        $this->session->set_userdata('usua_apellidos',$data['usua_apellidos']);
-        $this->session->set_userdata('usua_direccion',$data['usua_direccion']);
         $this->session->set_userdata('usua_email',$data['usua_email']);
-        $this->session->set_userdata('usua_telefono',$data['usua_telefono']);
         $this->session->set_userdata('usua_password',$data['usua_password']);
         $this->load->view('header.php');
 
@@ -92,7 +87,7 @@ function login_user(){
 
 }
 
-public function menu(){
+function header(){
 
 $this->load->view('header.php');
 

@@ -12,20 +12,47 @@ class Ejemplar extends CI_Controller {
   
     public function index()
     {
+       
         $this->load->view('header');
-
-        $data['ejemplares'] = $this->Ejemplar_model->lista();
+        $data['date'] = $this->Ejemplar_model->notes_list();
+        $data['title'] = 'Notes List';
+        
         $this->load->view('ejemplar/lista', $data);
+
     }
+     public function do_upload()
+        {
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 10000;
+                $config['max_width']            = 10240;
+                $config['max_height']           = 7680;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                        $error = array('error' => $this->upload->display_errors());
+
+                        $this->load->view('ejemplar/crear', $error);
+                }
+                else
+                {
+                        $data = array('upload_data' => $this->upload->data());
+
+                        $this->load->view('upload_success', $data);
+                }
+        }
+
   
-    public function crear()
+    public function create()
     {
         $this->load->view('header');
-        $data['titulo'] = 'Crear Libro';
+        $data['title'] = 'Crear Ejemplar';
         $this->load->view('ejemplar/crear', $data);
     }
       
-    public function editar($id)
+    public function edit($id)
     {
         $id = $this->uri->segment(3);
         $data = array();
@@ -34,45 +61,40 @@ class Ejemplar extends CI_Controller {
         { 
          show_404();
         }else{
+          $data['rem'] = $this->Ejemplar_model->get_notes_by_id($id);
           $this->load->view('header');
-          $data['ejemplar'] = $this->Ejemplar_model->get_ejemplares_by_id($id);
-          $data['categoria'] = $this->Ejemplar_model->get_cates_by_id($id);
           $this->load->view('ejemplar/editar', $data);
         }
     }
-    public function validaciones()
+    public function store()
     {
+        
+        $this->form_validation->set_rules('ejem_titulo', 'titulo', 'required');
+        $this->form_validation->set_rules('ejem_paginas', 'paginas', 'required');
+        $this->form_validation->set_rules('ejem_isbn', 'ISBN', 'required');
+        $this->form_validation->set_rules('ejem_idioma', 'idioma', 'required');
+        $this->form_validation->set_rules('ejem_anio', 'anio', 'required');
  
-        $this->form_validation->set_rules('titulo', 'Titulo', 'required|alpha');
-        $this->form_validation->set_rules('editorial', 'Editorial', 'required');
-        $this->form_validation->set_rules('isbn', 'Isbn', 'required');
-        $this->form_validation->set_rules('idioma', 'Idioma', 'required');
-        $this->form_validation->set_rules('paginas', 'Paginas', 'required');
-        $this->form_validation->set_rules('categoria', 'required');
-        $this->form_validation->set_rules('anio', 'Anio', 'required');
-        $this->form_validation->set_rules('resumen', 'Resumen', 'required');
-        $id = $this->input->post('id');
+        $id = $this->input->post('ejem_id');
  
         if ($this->form_validation->run() === FALSE)
         {  
             if(empty($id)){
-              redirect( base_url('Ejemplar/crear/') ); 
-
+              redirect( base_url('ejemplar/create') ); 
             }else{
-             redirect( base_url('Ejemplar/editar/'.$id) ); 
+             redirect( base_url('ejemplar/editar/'.$id) ); 
             }
         }
         else
         {
-            $data['ejemplar'] = $this->Ejemplar_model->createOrUpdate();
-            redirect( base_url('index.php/Ejemplar') ); 
+            $data['rem'] = $this->Ejemplar_model->createOrUpdate();
+            redirect( base_url('Ejemplar/index') ); 
         }
          
     }
-
      
      
-    public function eliminar()
+    public function delete()
     {
         $id = $this->uri->segment(3);
          
@@ -81,8 +103,10 @@ class Ejemplar extends CI_Controller {
             show_404();
         }
                  
-        $ejemplares = $this->Ejemplar_model->delete($id);
+        $rem = $this->Ejemplar_model->delete($id);
          
-        redirect( base_url('index.php/Ejemplar') );        
+        redirect( base_url('Ejemplar/index') );        
     }
+
 }
+    

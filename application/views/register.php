@@ -5,12 +5,12 @@
 </head>
 <body>
 
-                <!--  <?php
+              <?php
                   $error_msg=$this->session->flashdata('error_msg');
                   if($error_msg){
                     echo $error_msg;
                   }
-                  ?>-->
+                   ?>
 
         <div class="loginBox">
         <img src="<?php echo base_url('static/css/user.png') ?>" class="user">
@@ -48,7 +48,7 @@
               </section>
             </header> 
           </center>
-        
+        </form>
       </div>
   </body>
 </html>
