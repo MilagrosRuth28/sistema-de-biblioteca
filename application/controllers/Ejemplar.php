@@ -9,50 +9,87 @@ class Ejemplar extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
     }
+
   
     public function index()
     {
        
-        $this->load->view('header');
-        $data['date'] = $this->Ejemplar_model->notes_list();
-        $data['title'] = 'Notes List';
-        
-        $this->load->view('ejemplar/lista', $data);
+        $this->load->view('header'); 
+        $this->load->view('portada'); 
+        $this->load->view('Pie');
 
     }
-     public function do_upload()
+    function ejemplar(){
+
+        $this->load->view('header'); 
+        $data['ejemplares'] = $this->Ejemplar_model->notes_list();
+        $data['title'] = 'Notes list';
+        
+        $this->load->view('ejemplar/lista', $data);
+        $this->load->view('Pie');
+    }
+
+
+     public function upload_Port()
         {
-                $config['upload_path']          = './uploads/';
-                $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 10000;
-                $config['max_width']            = 10240;
-                $config['max_height']           = 7680;
+       $this->form_validation->set_rules('ejem_titulo', 'titulo', 'required');
+        $this->form_validation->set_rules('ejem_paginas', 'paginas', 'required');
+        $this->form_validation->set_rules('ejem_isbn', 'ISBN', 'required');
+        $this->form_validation->set_rules('ejem_idioma', 'idioma', 'required');
+        $this->form_validation->set_rules('ejem_anio', 'anio', 'required');
+            $config = array(
+            'upload_path' => "./uploads/",
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => 0,
+            'max_height' => 0,
+            'max_width' => 0
 
-                $this->load->library('upload', $config);
+            );
+          $this->load->library('upload', $config);
+          if ($this->upload->do_upload('ejem_portada'))
+            $dat =  $this->upload->data("file_name");
+        else $dat = NULL;
+        $data = [
+            'ejem_titulo'=>$this->input->post('ejem_titulo'),
+            
+            'ejem_paginas'=>$this->input->post('ejem_paginas'),
+            'ejem_portada'=>$dat,
+            'ejem_cate_id'=>$this->input->post('ejem_categoria'),
+            'ejem_isbn'=>$this->input->post('ejem_isbn'),
+            'ejem_resumen'=>$this->input->post('ejem_resumen'),
+            'ejem_idioma'=>$this->input->post('ejem_idioma'),
+            'ejem_anio'=>$this->input->post('ejem_anio'),
+            
 
-                if ( ! $this->upload->do_upload('userfile'))
-                {
-                        $error = array('error' => $this->upload->display_errors());
-
-                        $this->load->view('ejemplar/crear', $error);
-                }
-                else
-                {
-                        $data = array('upload_data' => $this->upload->data());
-
-                        $this->load->view('upload_success', $data);
-                }
+        ];
+        $id = $this->input->post('ejem_id');
+             
+       if ($this->form_validation->run() === FALSE)
+        {  
+            if(empty($id)){
+              redirect( base_url('ejemplar/crear') ); 
+            }else{
+             redirect( base_url('ejemplar/editar/'.$id) ); 
+            }
         }
+        else
+        {
+            $data['ejemplar'] = $this->Ejemplar_model->createOrUpdate($data);
+            redirect( base_url('Ejemplar/index') ); 
+        }
+    }
+
 
   
-    public function create()
+    public function crear()
     {
         $this->load->view('header');
         $data['title'] = 'Crear Ejemplar';
         $this->load->view('ejemplar/crear', $data);
     }
       
-    public function edit($id)
+    public function editar()
     {
         $id = $this->uri->segment(3);
         $data = array();
@@ -61,40 +98,14 @@ class Ejemplar extends CI_Controller {
         { 
          show_404();
         }else{
-          $data['rem'] = $this->Ejemplar_model->get_notes_by_id($id);
+          $data['ejemplar'] = $this->Ejemplar_model->Update($id);
           $this->load->view('header');
           $this->load->view('ejemplar/editar', $data);
         }
     }
-    public function store()
-    {
-        
-        $this->form_validation->set_rules('ejem_titulo', 'titulo', 'required');
-        $this->form_validation->set_rules('ejem_paginas', 'paginas', 'required');
-        $this->form_validation->set_rules('ejem_isbn', 'ISBN', 'required');
-        $this->form_validation->set_rules('ejem_idioma', 'idioma', 'required');
-        $this->form_validation->set_rules('ejem_anio', 'anio', 'required');
- 
-        $id = $this->input->post('ejem_id');
- 
-        if ($this->form_validation->run() === FALSE)
-        {  
-            if(empty($id)){
-              redirect( base_url('ejemplar/create') ); 
-            }else{
-             redirect( base_url('ejemplar/editar/'.$id) ); 
-            }
-        }
-        else
-        {
-            $data['rem'] = $this->Ejemplar_model->createOrUpdate();
-            redirect( base_url('Ejemplar/index') ); 
-        }
-         
-    }
      
      
-    public function delete()
+    public function eliminar()
     {
         $id = $this->uri->segment(3);
          
@@ -103,7 +114,7 @@ class Ejemplar extends CI_Controller {
             show_404();
         }
                  
-        $rem = $this->Ejemplar_model->delete($id);
+        $ejemplares = $this->Ejemplar_model->delete($id);
          
         redirect( base_url('Ejemplar/index') );        
     }

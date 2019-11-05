@@ -61,9 +61,13 @@ class Autor extends CI_Controller {
         {
             $data['autor'] = $this->Autor_model->createOrUpdate();
             redirect( base_url('index.php/Autor') ); 
+            $autores = $this->input->post('autores');
+       
+        }
         }
          
-    }
+    
+
      
      
     public function eliminar()

@@ -1,4 +1,4 @@
- <div class="row">
+<div class="row">
        <div class="container">
             <a href="#">
                 <img src="<?php echo base_url(); ?>images/admi.jpg" class="img-responsive" alt="inn_logo" style="width: 140px; margin-left: 80px; border-radius: 5px;"/>

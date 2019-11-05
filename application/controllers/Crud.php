@@ -15,8 +15,10 @@ public function __construct()
 public function index()
 {
 
-$this->load->view("header");
- $this->load->view("portada.php");
+        $this->load->view("header");
+        $data['result'] = $this->Crud_model->getAllData();
+		$this->load->view('lista/crudView', $data);
+        $this->load->view('Pie');
 }
     public function create() {
         $this->Crud_model->createData();
@@ -52,11 +54,5 @@ $this->load->view("header");
     $data = $this->ModelCate->getBusqueda($q);
     
   
-} 
-public function portada(){
-    $this->load->view("header.php");
-    $this->load->view("portada.php");
-    $this->load->view("pie.php");
-}
-}
+}}
 ?>

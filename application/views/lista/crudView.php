@@ -24,6 +24,7 @@
                         <label for="exampleInputEmail1">Nombres</label>
                         <input type="text" class="form-control" name="usua_nombres" aria-describedby="emailHelp" placeholder="Nombres">
                     </div>
+                    
                     <div class="form-group">
                         <label for="exampleInputEmail1">Apellidos</label>
                         <input type="text" class="form-control" name="usua_apellidos" aria-describedby="emailHelp" placeholder="Apellidos">
