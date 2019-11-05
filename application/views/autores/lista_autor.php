@@ -1,4 +1,17 @@
-
+<!--datatables-->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript">
+ $(document).ready(function() { 
+            $("#example").dataTable( {
+        "scrollX":        "1100px",
+        "scrollY":        "800",
+        "scrollCollapse": true,
+        "paging":         false
+    } ); 
+        }); 
+    </script>
     
 <div class="container">
     <div class="row mt40">
@@ -6,13 +19,13 @@
     <h2>Autores</h2>
    </div>
    <div class="col-md-2">
-    <a href="<?php echo base_url('index.php/Autor/crear/') ?>" class="btn btn-danger"><i class="fas fa-user-plus"></i>Crear Autor</a>
+    <a href="<?php echo base_url('index.php/Autor/crear/') ?>" class="btn btn-danger">Crear Autor<i class="fas fa-user-plus"></i></a>
    </div>
    <hr>
    <br>
    <br>
    <br>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="example" cellspacing="0" width="100%">
        <thead>
           <tr>
              <th>Id</th>
