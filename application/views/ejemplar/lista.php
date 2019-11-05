@@ -1,46 +1,48 @@
-
-
-<div id="container">
-
- <div class="row mt40">
+  <div class="container">
+    <div class="row mt40">
    <div class="col-md-10">
-    <h2></h2>
+    <h2>Ejemplares</h2>
    </div>
    <div class="col-md-2">
-    <a href="<?php echo base_url('Ejemplar/create/') ?>" class="btn btn-danger">Nuevo</a>
+    <a href="<?php echo base_url('index.php/Ejemplar/crear/') ?>" class="btn btn-danger">Agregar Ejemplar<i class='fas fa-book' style="font-size:25px;color:white"></i></a>
    </div>
    <br><br>
-
-      <table  class="table table-dark table-striped table-hover" id="user_datita" style="width:100%">
-        <thead>
+ 
+    <table class="table table-bordered">
+       <thead>
           <tr>
-             <th>Id</th>
-             <th>Titulo</th>
-             <th>Año</th>
-             <th>Idioma</th>
-             <th>ISBN</th>
-             <th colspan="2">acciones</th>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Año</th>
+            <!--<th>Categoría</th>-->
+            <th>Opciones</th>
           </tr>
        </thead>
-       <tbody>
-          <?php 
-          foreach($date as $rem) {?>
+                 <tbody>
+          <?php if($ejemplares): ?>
+          <?php foreach($ejemplares as $ejemplar): ?>
           <tr>
-             <td><?php echo $rem->ejem_id; ?></td>
-             <td><?php echo $rem->ejem_titulo; ?></td>
-             <td><?php echo $rem->ejem_anio; ?></td>
-             <td><?php echo $rem->ejem_idioma; ?></td>
-             <td><?php echo $rem->ejem_isbn; ?></td>
-             <td><a href="<?php echo base_url('Ejemplar/edit/'.$rem->ejem_id) ?>" class="btn btn-primary">Editar</a></td>
-                 <td>
-                <form action="<?php echo base_url('Ejemplar/delete/'.$rem->ejem_id) ?>" method="post">
-                  <button class="btn btn-danger" type="submit">Elimina</button>
-                </form>
-            </td>
+             <td><?php echo $ejemplar->ejem_id; ?></td>
+             <td><?php echo $ejemplar->ejem_titulo; ?></td>
+             <td><?php echo $ejemplar->ejem_anio  ?></td>
+             <!--<td><?php echo $ejemplar->cate_nombre; ?></td>-->
+             <td>
+              <div class="dropdown">
+                <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Accion
+                  <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="<?php echo base_url('index.php/Ejemplar/editar/'.$ejemplar->ejem_id) ?>" class="fas fa-user-edit" style="font-size:25px;color:green">Editar</a></li>
+                      <li><form action="<?php echo base_url('index.php/Ejemplar/eliminar/'.$ejemplar->ejem_id) ?>" method="POST"><button class="beliminar fas fa-trash" style="font-size:25px;color:red" type="submit">Eliminar</button></form></li>
+                    </ul>
+              </div>
+             </td>
           </tr>
-  <?php } ?>
+  <?php endforeach; ?>
+         <?php endif; ?>
         </tbody>
-      </table>
-    </div>
-  </div>
+    </table>
+                </div>
+ 
 </div>
+</body>
+</html>

@@ -6,7 +6,7 @@
     <h2>Autores</h2>
    </div>
    <div class="col-md-2">
-    <a href="<?php echo base_url('index.php/Autor/crear/') ?>" class="btn btn-danger">Crear Autor</a>
+    <a href="<?php echo base_url('index.php/Autor/crear/') ?>" class="btn btn-danger"><i class="fas fa-user-plus"></i>Crear Autor</a>
    </div>
    <hr>
    <br>

@@ -12,23 +12,20 @@ class Ejemplar extends CI_Controller {
   
     public function index()
     {
-       
         $this->load->view('header');
-        $data['date'] = $this->Ejemplar_model->notes_list();
-        $data['title'] = 'Notes List';
-        
-        $this->load->view('ejemplar/lista', $data);
 
+        $data['ejemplares'] = $this->Ejemplar_model->lista();
+        $this->load->view('ejemplar/lista', $data);
     }
   
-    public function create()
+    public function crear()
     {
         $this->load->view('header');
-        $data['title'] = 'Crear Ejemplar';
+        $data['titulo'] = 'Crear Libro';
         $this->load->view('ejemplar/crear', $data);
     }
       
-    public function edit($id)
+    public function editar($id)
     {
         $id = $this->uri->segment(3);
         $data = array();
@@ -37,40 +34,45 @@ class Ejemplar extends CI_Controller {
         { 
          show_404();
         }else{
-          $data['rem'] = $this->Ejemplar_model->get_notes_by_id($id);
           $this->load->view('header');
+          $data['ejemplar'] = $this->Ejemplar_model->get_ejemplares_by_id($id);
+          $data['categoria'] = $this->Ejemplar_model->get_cates_by_id($id);
           $this->load->view('ejemplar/editar', $data);
         }
     }
-    public function store()
+    public function validaciones()
     {
-        
-        $this->form_validation->set_rules('ejem_titulo', 'titulo', 'required');
-        $this->form_validation->set_rules('ejem_paginas', 'paginas', 'required');
-        $this->form_validation->set_rules('ejem_isbn', 'ISBN', 'required');
-        $this->form_validation->set_rules('ejem_idioma', 'idioma', 'required');
-        $this->form_validation->set_rules('ejem_anio', 'anio', 'required');
  
-        $id = $this->input->post('ejem_id');
+        $this->form_validation->set_rules('titulo', 'Titulo', 'required|alpha');
+        $this->form_validation->set_rules('editorial', 'Editorial', 'required');
+        $this->form_validation->set_rules('isbn', 'Isbn', 'required');
+        $this->form_validation->set_rules('idioma', 'Idioma', 'required');
+        $this->form_validation->set_rules('paginas', 'Paginas', 'required');
+        $this->form_validation->set_rules('categoria', 'required');
+        $this->form_validation->set_rules('anio', 'Anio', 'required');
+        $this->form_validation->set_rules('resumen', 'Resumen', 'required');
+        $id = $this->input->post('id');
  
         if ($this->form_validation->run() === FALSE)
         {  
             if(empty($id)){
-              redirect( base_url('ejemplar/create') ); 
+              redirect( base_url('Ejemplar/crear/') ); 
+
             }else{
-             redirect( base_url('ejemplar/editar/'.$id) ); 
+             redirect( base_url('Ejemplar/editar/'.$id) ); 
             }
         }
         else
         {
-            $data['rem'] = $this->Ejemplar_model->createOrUpdate();
-            redirect( base_url('Ejemplar/index') ); 
+            $data['ejemplar'] = $this->Ejemplar_model->createOrUpdate();
+            redirect( base_url('index.php/Ejemplar') ); 
         }
          
     }
+
      
      
-    public function delete()
+    public function eliminar()
     {
         $id = $this->uri->segment(3);
          
@@ -79,10 +81,8 @@ class Ejemplar extends CI_Controller {
             show_404();
         }
                  
-        $rem = $this->Ejemplar_model->delete($id);
+        $ejemplares = $this->Ejemplar_model->delete($id);
          
-        redirect( base_url('Ejemplar/index') );        
+        redirect( base_url('index.php/Ejemplar') );        
     }
-
 }
-    
