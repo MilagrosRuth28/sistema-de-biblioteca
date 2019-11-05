@@ -1,6 +1,6 @@
 # sistema-de-biblioteca
 
-#	PASOS PARA EJECUTAR EL SISTEMA:
+    #	PASOS PARA EJECUTAR EL SISTEMA:
 
     # 1RO. DESCARGAR E INSTALAR EL PROGRAMA.
     # 2DO. DESCOMPRIMIR EL ARCHIVO vendor.rar 
@@ -9,6 +9,6 @@
     # 5TO. UTILIZAR LA CUENTA DE USUARIO SIGUIENTE: 
     # 6TO. EL NOMBRE DE LA CARPETA DEVE SER "sistema-de-biblioteca":
 		      #	EMAIL: admin@admin.com
-	      	#	CONTRASEÑA: admin
+	      	      #	CONTRASEÑA: admin
     
 
