@@ -1,3 +1,18 @@
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript">
+ $(document).ready(function() { 
+            $("#ejem_datita").dataTable( {
+        "scrollX":        "1100px",
+        "scrollY":        "800",
+        "scrollCollapse": true,
+        "paging":         false
+    } ); 
+        }); 
+    </script>
   <div class="container">
     <div class="row mt40">
    <div class="col-md-10">
@@ -8,7 +23,7 @@
    </div>
    <br><br>
  
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="ejem_datita" cellspacing="0" width="100%">
        <thead>
           <tr>
             <th>ID</th>
