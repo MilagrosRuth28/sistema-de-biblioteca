@@ -3,30 +3,30 @@
            <div class="form-row">
     <div class="form-group col-md-6">
       <label>Titulo</label>
-      <input type="text" class="form-control"  name="ejem_titulo" placeholder="Ingrese el Titulo">
+      <input type="text" class="form-control"  name="titulo" placeholder="Ingrese el Titulo">
     </div>
     <div class="form-group col-md-6">
       <label>Editorial</label>
-      <input type="text" class="form-control" id="Editorial" name="ejem_editorial" placeholder="Ingrese Editorial">
+      <input type="text" class="form-control" id="Editorial" name="editorial" placeholder="Ingrese Editorial">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-5">
       <label>ISBN</label>
-      <input type="text" class="form-control" id="Isbn" name="ejem_isbn" placeholder="Ingrese ISBN">
+      <input type="text" class="form-control" id="Isbn" name="isbn" placeholder="Ingrese ISBN">
     </div>
     <div class="form-group col-md-4">
       <label>Idioma</label>
-      <input type="text" class="form-control" id="Idioma" name="ejem_idioma" placeholder="Ingrese Idioma">
+      <input type="text" class="form-control" id="Idioma" name="idioma" placeholder="Ingrese Idioma">
     </div>
     <div class="form-group col-md-3">
       <label>Paginas</label>
-      <input type="text" class="form-control" id="Paginas" name="ejem_paginas" placeholder="Ingrese Numero de Paginas">
+      <input type="text" class="form-control" id="Paginas" name="paginas" placeholder="Ingrese Numero de Paginas">
     </div>
   </div>
      <div class="form-group col-md-12">         
                 <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile" name="ejem_portada" >
+                <input type="file" class="custom-file-input" id="customFile" name="portada" >
                 <label class="custom-file-label border-dark" for="customFile">Archivo Digital</label>
                 </div>
             </div>
@@ -46,7 +46,7 @@
           <option value="<?php echo $tipos->cate_id; ?>">  <?php echo $tipos->cate_nombre; ?> </option>
         <?php endforeach; ?>
       </select>
-    </div>
+    </div>-->
     <div class="form-group col-md-4">
       <label>Seleccione categoria</label>
       <select class="form-control" name = "categoria" >
@@ -54,10 +54,10 @@
           <option value="<?php echo $item->cate_id; ?>">  <?php echo $item->cate_nombre; ?> </option>
         <?php endforeach; ?>
       </select>
-    </div>-->
+    </div>
     <div class="form-group col-md-4">
       <label>Año</label>
-      <input type="text" class="form-control" id="Anio" name="ejem_anio" placeholder="Ingrese el Año">
+      <input type="text" class="form-control" id="Anio" name="anio" placeholder="Ingrese el Año">
     </div>
   </div>
 <!-------------------------EL INGE DIJO QUE LUEGO HARIAMOS ESTO ggg------------------------->
@@ -77,15 +77,7 @@
     </div>
   </div>-->
   
-  <div class="form-group col-md-6">
-            <select class="custom-select border-dark" name="categoria">
-              <option selected>Categoría</option>
-              <?php foreach ($categoria as $cate):  ?>
-                <option value="<?php echo $cate->cate_id; ?>"><?php echo $ejemplar->cate_nombre; ?></option>
-              <?php endforeach; ?>
-              
-            </select>
-            </div>
+
   <div class="form-group">
 
 
@@ -93,7 +85,7 @@
 
 
     <label>Resumen</label>
-      <input type="text" class="form-control" id="Resumen" name="ejem_resumen" placeholder="Ingrese Resumen">
+      <input type="text" class="form-control" id="Resumen" name="resumen" placeholder="Ingrese Resumen">
   </div>
 
   <hr class="sidebar-divider my-2">
@@ -106,7 +98,7 @@
     </div>
     <div class="form-group col-md-1.5">
       <div class="col-md-1 text-center">
-        <a href="<?= base_url('Ejemplar/index')?>" class="btn btn-warning btn-lg">Cancelar</a>
+        <a href="<?= base_url('Ejemplar/ejemplar')?>" class="btn btn-warning btn-lg">Cancelar</a>
       </div>
     </div>
   </div>

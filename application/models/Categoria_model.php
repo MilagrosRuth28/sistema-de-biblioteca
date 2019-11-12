@@ -1,20 +1,12 @@
 <?php
 class Ejemplar_model extends CI_Model {
 
-    //public $id = 'ejem_id';
-  
     public function __construct()
-
     {
         parent::__construct();
         $this->load->database();
     }
-     
-    public function notes_list()
-    {   
-        $query = $this->db->query('SELECT * from ejemplar,categoria where ejem_cate_id=cate_id');
-        return $query->result();
-    }
+
      
     public function Update($id)
     {
@@ -26,7 +18,8 @@ class Ejemplar_model extends CI_Model {
      
     public function createOrUpdate($data)
     {                
-        if (empty($id)) {
+        if (empty($id)) 
+               {
             return $this->db->insert('ejemplar', $data);
         } else {
             $this->db->where('ejem_id', $id);
@@ -35,10 +28,4 @@ class Ejemplar_model extends CI_Model {
 
     }
     
-     
-    public function delete($id)
-    {
-        $this->db->where('ejem_id', $id);
-        return $this->db->delete('ejemplar');
-    }
 }

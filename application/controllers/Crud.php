@@ -26,8 +26,11 @@ public function index()
     }
 
     public function edit($id) {
+        $this->load->view("header");
+
         $data['row'] = $this->Crud_model->getData($id);
-        $this->load->view('crudEdit', $data);
+        $this->load->view('lista/crudEdit', $data);
+        $this->load->view('Pie');
      
     }
 

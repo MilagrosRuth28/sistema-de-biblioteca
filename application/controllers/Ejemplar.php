@@ -9,22 +9,25 @@ class Ejemplar extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
     }
-
-  
     public function index()
     {
-       
         $this->load->view('header'); 
         $this->load->view('portada'); 
         $this->load->view('Pie');
-
     }
-    function ejemplar(){
+   /* public function portada()
+    {
+        $this->load->view('header'); 
+        
+        $this->load->view('', $data);
+        $this->load->view('Pie');
+    }*/
+    public function ejemplar()
+    {
 
         $this->load->view('header'); 
         $data['ejemplares'] = $this->Ejemplar_model->notes_list();
         $data['title'] = 'Notes list';
-        
         $this->load->view('ejemplar/lista', $data);
         $this->load->view('Pie');
     }
@@ -32,11 +35,11 @@ class Ejemplar extends CI_Controller {
 
      public function upload_Port()
         {
-       $this->form_validation->set_rules('ejem_titulo', 'titulo', 'required');
-        $this->form_validation->set_rules('ejem_paginas', 'paginas', 'required');
-        $this->form_validation->set_rules('ejem_isbn', 'ISBN', 'required');
-        $this->form_validation->set_rules('ejem_idioma', 'idioma', 'required');
-        $this->form_validation->set_rules('ejem_anio', 'anio', 'required');
+        $this->form_validation->set_rules('titulo', 'titulo', 'required');
+        $this->form_validation->set_rules('paginas', 'paginas', 'required');
+        $this->form_validation->set_rules('isbn', 'ISBN', 'required');
+        $this->form_validation->set_rules('idioma', 'idioma', 'required');
+        $this->form_validation->set_rules('anio', 'anio', 'required');
             $config = array(
             'upload_path' => "./uploads/",
             'allowed_types' => "gif|jpg|png|jpeg|pdf",
@@ -46,25 +49,22 @@ class Ejemplar extends CI_Controller {
             'max_width' => 0
 
             );
-          $this->load->library('upload', $config);
-          if ($this->upload->do_upload('ejem_portada'))
+        $this->load->library('upload', $config);
+          if ($this->upload->do_upload('portada'))
             $dat =  $this->upload->data("file_name");
         else $dat = NULL;
         $data = [
-            'ejem_titulo'=>$this->input->post('ejem_titulo'),
-            
-            'ejem_paginas'=>$this->input->post('ejem_paginas'),
+            'ejem_titulo'=>$this->input->post('titulo'),
+            'ejem_paginas'=>$this->input->post('paginas'),
             'ejem_portada'=>$dat,
-            'ejem_cate_id'=>$this->input->post('ejem_categoria'),
-            'ejem_isbn'=>$this->input->post('ejem_isbn'),
-            'ejem_resumen'=>$this->input->post('ejem_resumen'),
-            'ejem_idioma'=>$this->input->post('ejem_idioma'),
-            'ejem_anio'=>$this->input->post('ejem_anio'),
-            
-
+            'ejem_cate_id'=>$this->input->post('categoria'),
+            'ejem_isbn'=>$this->input->post('isbn'),
+            'ejem_resumen'=>$this->input->post('resumen'),
+            'ejem_idioma'=>$this->input->post('idioma'),
+            'ejem_anio'=>$this->input->post('anio'),
         ];
-        $id = $this->input->post('ejem_id');
-             
+       $id = $this->input->post('ejem_id');
+
        if ($this->form_validation->run() === FALSE)
         {  
             if(empty($id)){
@@ -76,7 +76,7 @@ class Ejemplar extends CI_Controller {
         else
         {
             $data['ejemplar'] = $this->Ejemplar_model->createOrUpdate($data);
-            redirect( base_url('Ejemplar/index') ); 
+            redirect( base_url('Ejemplar/ejemplar') ); 
         }
     }
 
@@ -93,7 +93,6 @@ class Ejemplar extends CI_Controller {
     {
         $id = $this->uri->segment(3);
         $data = array();
- 
         if (empty($id))
         { 
          show_404();
@@ -113,10 +112,8 @@ class Ejemplar extends CI_Controller {
         {
             show_404();
         }
-                 
         $ejemplares = $this->Ejemplar_model->delete($id);
-         
-        redirect( base_url('Ejemplar/index') );        
+        redirect( base_url('Ejemplar/ejemplar') );        
     }
 
 }

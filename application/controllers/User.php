@@ -23,6 +23,7 @@ public function register_user(){
       'usua_email'=>$this->input->post('usua_email'),
       'usua_telefono'=>$this->input->post('usua_telefono'),
       'usua_password'=>md5($this->input->post('usua_password')),
+      //'usua_esadmin'=>$this->input->post('usua_esadmin'),
     
       
         );
@@ -39,7 +40,7 @@ if($email_check){
 else{
 
   $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-  redirect('usuario');
+  redirect('user/register_user');
 
 
 }
@@ -66,9 +67,10 @@ function login_user(){
   $user_login=array(
 
   'usua_email'=>$this->input->post('usua_email'),
+  'usua_esadmin'=>$this->input->post('usua_esadmin'),
   'usua_password'=>md5($this->input->post('usua_password')),
     );
-
+   
     $data=$this->user_model->login_user($user_login['usua_email'],$user_login['usua_password']);
       if($data)
     {
@@ -83,6 +85,7 @@ function login_user(){
         $this->load->view('header.php');
         $this->load->view('portada');
     }
+
       else{
         $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
         $this->load->view("login.php");
@@ -92,10 +95,10 @@ function login_user(){
 
 }
 
-public function menu(){
+public function menu()
+{
 
 $this->load->view('header.php');
-
 
 }
 public function user_logout(){

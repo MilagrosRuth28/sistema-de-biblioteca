@@ -2,7 +2,7 @@
     <div class="container">
     <br>
     <br>
-        <form method="post" action="<?php echo site_url('CrudController/update')?>/<?php echo $row->usua_id; ?>">
+        <form method="post" action="<?php echo site_url('Crud/update')?>/<?php echo $row->usua_id; ?>">
             <div class="form-group">
                 <label for="exampleInputEmail1">Nombres</label>
                 <input type="text" class="form-control" name="usua_nombres" value="<?php echo $row->usua_nombres; ?>" aria-describedby="emailHelp" placeholder="Nombres">
@@ -24,7 +24,7 @@
                 <input type="text" class="form-control" name="usua_telefono" value="<?php echo $row->usua_telefono; ?>" aria-describedby="emailHelp" placeholder="000000000">
             </div>
             <button type="submit" class="btn btn-primary" value="save">Submit</button>
-            <a href="<?php echo site_url('CrudController')?>"><button type="button" class="btn btn-danger">Cancel</button></a>
+            <a href="<?php echo site_url('Crud')?>"><button type="button" class="btn btn-danger">Cancel</button></a>
         </form>  
     </div>
 

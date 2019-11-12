@@ -1,11 +1,10 @@
 <?php
 $user_id=$this->session->userdata('usua_id');
-
 if(!$user_id){
 
   redirect('user/login_view');
 }
-
+    
  ?>
 
 <!DOCTYPE html>
@@ -248,10 +247,7 @@ if(!$user_id){
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                  
-
-
-nombre
+              nomnbre
 
 
                 </span>

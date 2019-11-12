@@ -1,4 +1,9 @@
 
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+ 
     <div class="container">
     <br>
         <!-- Button trigger modal -->
@@ -48,9 +53,18 @@
         </div>
         </div>
 
-
-        <table class="table">
-            <thead class="thead-dark">
+ <script type="text/javascript">
+ $(document).ready(function() { 
+            $("#ejem_datita").dataTable( {
+        "scrollX":        "1100px",
+        "scrollY":        "800",
+        "scrollCollapse": true,
+        "paging":         false
+    } ); 
+        }); 
+    </script>
+ <table class="table table-bordered" id="ejem_datita" cellspacing="0" width="100%">
+       <thead>
                 <tr>
                 <th scope="col">n°</th>
                 <th scope="col">Nombres</th>
@@ -72,7 +86,7 @@
                 <td><?php echo $row->usua_direccion; ?></td>
                 <td><?php echo $row->usua_email; ?></td>
                 <td><?php echo $row->usua_telefono; ?></td>
-                <td> <a href="<?php echo site_url('CrudController/edit');?>/<?php echo $row->usua_id;?>">Edit</a>  | 
+                <td> <a href="<?php echo site_url('index.php/Crud/edit');?>/<?php echo $row->usua_id;?>">Edit</a>  | 
                    <a href="<?php echo site_url('index.php/Crud/delete');?>/<?php echo $row->usua_id;?>">Delete</a> </td>
                 </tr>
                 <?php } ?>

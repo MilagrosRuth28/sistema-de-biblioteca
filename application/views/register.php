@@ -26,7 +26,7 @@
               <p>Codigo</p>
               <input type="text" name="usua_codigo" placeholder="Codigo">
               <p>Nombres</p>
-              <input type="text" name="usua_nombre" placeholder="Nombres">
+              <input type="text" name="usua_nombres" placeholder="Nombres">
             </aside>
             <article></article>
             <aside id="right">

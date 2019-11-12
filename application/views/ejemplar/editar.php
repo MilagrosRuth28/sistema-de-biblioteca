@@ -6,7 +6,7 @@
     </div>
     <div class="card-body">
         
-<form action="<?php echo base_url('index.php/Ejemplar/validaciones') ?>" method="POST" name="edit_note">
+<form action="<?php echo base_url('index.php/Ejemplar/upload_Port') ?>" method="POST" name="edit_note">
    <input type="hidden" name="id" value="<?php echo $ejemplar->ejem_id ?>">
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -100,7 +100,7 @@
     </div>
     <div class="form-group col-md-1.5">
       <div class="col-md-1 text-center">
-        <a href="<?= base_url('Ejemplar/index')?>" class="btn btn-warning btn-lg">Cancelar</a>
+        <a href="<?= base_url('Ejemplar/ejemplar')?>" class="btn btn-warning btn-lg">Cancelar</a>
       </div>
     </div>
   </div>

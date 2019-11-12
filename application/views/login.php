@@ -46,19 +46,18 @@
                             <div class="form-group">
                                 <input class="form-control" placeholder="Contraseña" name="usua_password" type="password" value="">
                             </div>
-                              
+                              <div class="form-group">
+                                <!--<input class="form-control" placeholder="Administrador" name="usua_esadmin" type="Administrador" value="">
+                            </div>-->
 
-
+                            
 
                     <input class="btn btn-lg btn-success btn-block" type="submit" value="Ingresar" name="login" >
 
                         </fieldset>
                     </form>
                 <center><b>¿ No Registrado ?</b> <br></b><a href="<?php echo base_url('user/login_irRegistro');?>"> Registrarse</a> </center>
-                              <div class="form-group row mb-7">
-                                 <input type="text" name="usua_esadmin" value="0" hidden="1"> 
-                                  <input class="border-primary"  style="width:20px;height:20px; pa: 9px;" type="checkbox" value="1" name="usua_esadmin">Administrador?
-                              </div>
+                              
           </div>
         </div>
       </div>
