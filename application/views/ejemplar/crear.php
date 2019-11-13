@@ -1,6 +1,6 @@
 <form action="<?php echo base_url('index.php/Ejemplar/upload_Port') ?>" method="POST" name="edit_note" enctype="multipart/form-data">
   <input type="hidden" name="id">
-           <div class="form-row">
+  <div class="form-row">
     <div class="form-group col-md-6">
       <label>Titulo</label>
       <input type="text" class="form-control"  name="titulo" placeholder="Ingrese el Titulo">
@@ -24,20 +24,20 @@
       <input type="text" class="form-control" id="Paginas" name="paginas" placeholder="Ingrese Numero de Paginas">
     </div>
   </div>
-     <div class="form-group col-md-12">         
-                <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile" name="portada" >
-                <label class="custom-file-label border-dark" for="customFile">Archivo Digital</label>
-                </div>
-            </div>
+  <div class="form-group col-md-12">         
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="customFile" name="portada" >
+      <label class="custom-file-label border-dark" for="customFile">Archivo Digital</label>
+    </div>
+  </div>
 
    <!--
   <div class="form-group">
     <label for="exampleFormControlFile1">PORTADA</label>
     <input type="file" class="form-control-file" id="exampleFormControlFile1">
   </div>-->
-<!------------------------------------------------------------------------------------------>
-<!--AYUDA PARA TIPOS Y CATEGORIA-->
+  <!------------------------------------------------------------------------------------------>
+  <!--AYUDA PARA TIPOS Y CATEGORIA-->
   <div class="form-row">
     <!--<div class="form-group col-md-4">
       <label>Seleccione tipo</label>
@@ -50,17 +50,32 @@
     <div class="form-group col-md-4">
       <label>Seleccione categoria</label>
       <select class="form-control" name = "categoria" >
+        <option selected>Categoria</option>
         <?php foreach($categoria as $item): ?>
-          <option value="<?php echo $item->cate_id; ?>">  <?php echo $item->cate_nombre; ?> </option>
+          <option value="<?php echo $item->cate_id; ?>"><?php echo $item->cate_nombre; ?> </option>
         <?php endforeach; ?>
       </select>
     </div>
-    <div class="form-group col-md-4">
-      <label>Año</label>
-      <input type="text" class="form-control" id="Anio" name="anio" placeholder="Ingrese el Año">
+
+    <select class="cmultiple" name="autores[]" multiple>
+      <?php foreach ($autores as $autor) :  ?>
+        <option value="<?php echo $autor->auto_id; ?>" 
+          <?php foreach ($autores_sel as $sel) {
+            if ($autor->auto_id == $sel->rela_auto_id) {
+              echo "selected";
+            }
+          }
+          ?>><?php echo $autor->auto_nombres; ?></option>
+        <?php endforeach; ?>
+      </select>
+
+
+      <div class="form-group col-md-4">
+        <label>Año</label>
+        <input type="text" class="form-control" id="Anio" name="anio" placeholder="Ingrese el Año">
+      </div>
     </div>
-  </div>
-<!-------------------------EL INGE DIJO QUE LUEGO HARIAMOS ESTO ggg------------------------->
+    <!-------------------------EL INGE DIJO QUE LUEGO HARIAMOS ESTO ggg------------------------->
 <!--
   <div class="form-row">
     <div class="form-group col-md-4">
@@ -85,7 +100,7 @@
 
 
     <label>Resumen</label>
-      <input type="text" class="form-control" id="Resumen" name="resumen" placeholder="Ingrese Resumen">
+    <input type="text" class="form-control" id="Resumen" name="resumen" placeholder="Ingrese Resumen">
   </div>
 
   <hr class="sidebar-divider my-2">
@@ -103,6 +118,6 @@
     </div>
   </div>
 
-    </form>
-  </div>
+</form>
+</div>
 </div>

@@ -22,6 +22,10 @@ class Ejemplar extends CI_Controller {
         $this->load->view('', $data);
         $this->load->view('Pie');
     }*/
+    function provar()
+    {
+        $this->load->view('provar');
+    }
     public function ejemplar()
     {
 
@@ -57,13 +61,14 @@ class Ejemplar extends CI_Controller {
             'ejem_titulo'=>$this->input->post('titulo'),
             'ejem_paginas'=>$this->input->post('paginas'),
             'ejem_portada'=>$dat,
+            'rela_auto_id'=>$this->input->post('autor'),
+            'id_autor'=>$this->input->post('autor'),
             'ejem_cate_id'=>$this->input->post('categoria'),
             'ejem_isbn'=>$this->input->post('isbn'),
             'ejem_resumen'=>$this->input->post('resumen'),
             'ejem_idioma'=>$this->input->post('idioma'),
             'ejem_anio'=>$this->input->post('anio'),
         ];
-       $id = $this->input->post('ejem_id');
 
        if ($this->form_validation->run() === FALSE)
         {  
@@ -80,8 +85,6 @@ class Ejemplar extends CI_Controller {
         }
     }
 
-
-  
     public function crear()
     {
         $this->load->view('header');
@@ -97,10 +100,16 @@ class Ejemplar extends CI_Controller {
         { 
          show_404();
         }else{
+        /*$autores = $this->input->post('autores');
+        $this->ejemplar_model->update($id,$data);
+
+        $this->db->query("DELETE FROM ejemplar_autor WHERE rela_ejem_id='{$id}'");
+        foreach($autores as $autor){
+            $this->db->insert('ejemplar_autor',array('rela_auto_id'=>$autor,'rela_ejem_id'=>$id));*/
+        }
           $data['ejemplar'] = $this->Ejemplar_model->Update($id);
           $this->load->view('header');
           $this->load->view('ejemplar/editar', $data);
-        }
     }
      
      

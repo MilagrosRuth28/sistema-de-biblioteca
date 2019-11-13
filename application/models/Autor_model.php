@@ -15,6 +15,7 @@ class Autor_model extends CI_Model {
     public function get_notes_by_id($id)
     {
         $query = $this->db->get_where('autor', array('auto_id' => $id));
+        
         return $query->row();
     }
      

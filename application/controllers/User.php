@@ -11,9 +11,12 @@ public function __construct()
 }
 public function index()
 {
+  
+
 $this->load->view("login.php");
 }
 public function register_user(){
+  $this->load->view("header_login");
 
       $user=array(
       'usua_codigo'=>$this->input->post('usua_codigo'),
@@ -39,7 +42,8 @@ if($email_check){
 }
 else{
 
-  $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+  /*$this->session->set_flashdata('error_msg', '<div class="alert alert-danger h6 role="alert">Error occured,Try again.</div>');*/
+  $this->session->set_flashdata('error_msg', '<h6 style="background-color:red;">Error occured</h6>');
   redirect('user/register_user');
 
 
@@ -48,17 +52,19 @@ else{
 }
 
 public function login_view(){
-
 $this->load->view("login.php");
 
 }
 
 //FUNCIONES PARA LINKEAR LOGIN: 
 function login_irRegistro(){
+
   $this->load->view("register.php");
 }
 
 function login_volverLogin(){
+    $this->load->view("header_login");
+
   $this->load->view("login.php");
 }
 
@@ -87,7 +93,7 @@ function login_user(){
     }
 
       else{
-        $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+        $this->session->set_flashdata('error_msg', '<div class="alert alert-danger h6 role="alert">Error occured,Try again.</div>');
         $this->load->view("login.php");
 
       }
