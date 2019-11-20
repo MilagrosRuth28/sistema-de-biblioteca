@@ -39,7 +39,8 @@ class Autor_model extends CI_Model {
      
     public function delete($id)
     {
-        $this->db->where('auto_id', $id);
-        return $this->db->delete('autor');
+        $this->db->where('auto_id',$id);
+            $this->db->delete('autor');
+        
     }
 }

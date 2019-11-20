@@ -29,10 +29,12 @@
       <th>ID</th>
       <th>Portada</th>
       <th>Titulo</th>
+      <th>Autores</th>
+      <th>Categoria</th> 
       <th>Año</th>
-      <th>Categoria</th>
-      <th>Resumen</th>
-      <!--<th>Categoría</th>-->
+      <th>Telefono</th>
+      <th>Paginas</th>
+      <th>Tipo</th>
       <th>Opciones</th>
     </tr>
   </thead>
@@ -43,9 +45,13 @@
          <td><?php echo $ejemplar->ejem_id; ?></td>
          <td><img class="avatar rounded mr-3" alt="..." src="<?php echo base_url().'uploads/'. $ejemplar->ejem_portada?>" style="width: 100px;" ></td>
          <td><?php echo $ejemplar->ejem_titulo; ?></td>
-         <td><?php echo $ejemplar->ejem_anio;  ?></td>
+         <td><?php echo $ejemplar->auto_nombres; ?></td>
          <td><?php echo $ejemplar->cate_nombre; ?></td>
-         <td><?php echo $ejemplar->ejem_resumen; ?></td>
+         <td><?php echo $ejemplar->ejem_anio;  ?></td>
+         <td><?php echo $ejemplar->ejem_isbn; ?></td>
+         <td><?php echo $ejemplar->ejem_paginas; ?></td>
+         <td><?php echo $ejemplar->tipo_nombre; ?></td>
+
          <td>
           <div class="dropdown">
             <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Accion
@@ -64,5 +70,3 @@
 </div>
 
 </div>
-</body>
-</html>

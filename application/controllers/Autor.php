@@ -36,12 +36,8 @@ class Autor extends CI_Controller {
          show_404();
         }else{
           $this->load->view('header');
-//'autores'=>$this->db->query("SELECT * FROM autor")->result();
-//'autores_sel'=>$this->db->query("SELECT * FROM ejemplar_autor WHERE rela_ejem_id={$id}")->result()
-
           $data['autor'] = $this->Autor_model->get_notes_by_id($id);
           $this->load->view('autores/editar_autor', $data);
-
         }
     }
     public function validaciones()
@@ -65,13 +61,9 @@ class Autor extends CI_Controller {
         {
             $data['autor'] = $this->Autor_model->createOrUpdate();
             redirect( base_url('index.php/Autor') ); 
-            $autores = $this->input->post('autores');
-       
-        }
         }
          
-    
-
+    }
      
      
     public function eliminar()

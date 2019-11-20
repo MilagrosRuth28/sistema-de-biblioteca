@@ -11,12 +11,9 @@ public function __construct()
 }
 public function index()
 {
-  
-
 $this->load->view("login.php");
 }
 public function register_user(){
-  $this->load->view("header_login");
 
       $user=array(
       'usua_codigo'=>$this->input->post('usua_codigo'),
@@ -26,7 +23,6 @@ public function register_user(){
       'usua_email'=>$this->input->post('usua_email'),
       'usua_telefono'=>$this->input->post('usua_telefono'),
       'usua_password'=>md5($this->input->post('usua_password')),
-      //'usua_esadmin'=>$this->input->post('usua_esadmin'),
     
       
         );
@@ -42,9 +38,8 @@ if($email_check){
 }
 else{
 
-  /*$this->session->set_flashdata('error_msg', '<div class="alert alert-danger h6 role="alert">Error occured,Try again.</div>');*/
-  $this->session->set_flashdata('error_msg', '<h6 style="background-color:red;">Error occured</h6>');
-  redirect('user/register_user');
+  $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+  redirect('usuario');
 
 
 }
@@ -52,19 +47,17 @@ else{
 }
 
 public function login_view(){
+
 $this->load->view("login.php");
 
 }
 
 //FUNCIONES PARA LINKEAR LOGIN: 
 function login_irRegistro(){
-
   $this->load->view("register.php");
 }
 
 function login_volverLogin(){
-    $this->load->view("header_login");
-
   $this->load->view("login.php");
 }
 
@@ -73,27 +66,20 @@ function login_user(){
   $user_login=array(
 
   'usua_email'=>$this->input->post('usua_email'),
-  'usua_esadmin'=>$this->input->post('usua_esadmin'),
   'usua_password'=>md5($this->input->post('usua_password')),
     );
-   
+
     $data=$this->user_model->login_user($user_login['usua_email'],$user_login['usua_password']);
       if($data)
     {
         $this->session->set_userdata('usua_id',$data['usua_id']);
-        $this->session->set_userdata('usua_codigo',$data['usua_codigo']);
-        $this->session->set_userdata('usua_nombres',$data['usua_nombres']);
-        $this->session->set_userdata('usua_apellidos',$data['usua_apellidos']);
-        $this->session->set_userdata('usua_direccion',$data['usua_direccion']);
         $this->session->set_userdata('usua_email',$data['usua_email']);
-        $this->session->set_userdata('usua_telefono',$data['usua_telefono']);
         $this->session->set_userdata('usua_password',$data['usua_password']);
         $this->load->view('header.php');
-        $this->load->view('portada');
-    }
 
+    }
       else{
-        $this->session->set_flashdata('error_msg', '<div class="alert alert-danger h6 role="alert">Error occured,Try again.</div>');
+        $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
         $this->load->view("login.php");
 
       }
@@ -101,8 +87,7 @@ function login_user(){
 
 }
 
-public function menu()
-{
+function header(){
 
 $this->load->view('header.php');
 

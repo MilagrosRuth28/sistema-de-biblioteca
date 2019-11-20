@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2019 a las 00:22:04
+-- Tiempo de generación: 21-11-2019 a las 00:01:57
 -- Versión del servidor: 10.1.39-MariaDB
 -- Versión de PHP: 7.1.29
 
@@ -35,6 +35,17 @@ CREATE TABLE `autor` (
   `auto_biografia` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `autor`
+--
+
+INSERT INTO `autor` (`auto_id`, `auto_nombres`, `auto_apellidos`, `auto_biografia`) VALUES
+(6, 'Edward', 'Frenkel', 'Ciencia'),
+(7, 'Nicolas', 'Taleb', 'matematicas'),
+(8, 'Nasssim', 'Taleb', 'ciencias'),
+(9, 'Joan', 'Weytand', 'matematicas'),
+(10, 'Andreano', 'Weytand', 'Logica');
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +56,15 @@ CREATE TABLE `categoria` (
   `cate_id` int(11) NOT NULL,
   `cate_nombre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`cate_id`, `cate_nombre`) VALUES
+(1, 'Ingeniería'),
+(2, 'Biomédicas'),
+(3, 'Sociales');
 
 -- --------------------------------------------------------
 
@@ -70,6 +90,13 @@ CREATE TABLE `ejemplar` (
   `ejem_nprestamos` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `ejemplar`
+--
+
+INSERT INTO `ejemplar` (`ejem_id`, `ejem_titulo`, `ejem_editorial`, `ejem_paginas`, `ejem_isbn`, `ejem_idioma`, `ejem_portada`, `ejem_digital`, `ejem_audio`, `ejem_resumen`, `ejem_tipo_id`, `ejem_cate_id`, `ejem_valoracion`, `ejem_anio`, `ejem_nprestamos`) VALUES
+(1, 'Amor y Matematicas', NULL, 340, '986540000', 'ingles y español', 'portada.jpg', NULL, NULL, 'si no eres matematico este libro te hara desearlas ', 1, 1, NULL, 2001, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -81,6 +108,13 @@ CREATE TABLE `ejemplar_autor` (
   `rela_ejem_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `ejemplar_autor`
+--
+
+INSERT INTO `ejemplar_autor` (`rela_auto_id`, `rela_ejem_id`) VALUES
+(6, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -91,6 +125,14 @@ CREATE TABLE `ejemplar_tipo` (
   `tipo_id` int(11) NOT NULL,
   `tipo_nombre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ejemplar_tipo`
+--
+
+INSERT INTO `ejemplar_tipo` (`tipo_id`, `tipo_nombre`) VALUES
+(1, 'Libro'),
+(2, 'Revistas');
 
 -- --------------------------------------------------------
 
@@ -171,7 +213,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usua_id`, `usua_login`, `usua_password`, `usua_codigo`, `usua_nombres`, `usua_apellidos`, `usua_direccion`, `usua_email`, `usua_telefono`, `usua_esadmin`) VALUES
-(1, NULL, '21232f297a57a5a743894a0e4a801fc3', 12345, NULL, 'Grillo', 'grillitos', 'admin@admin.com', '8213123', NULL);
+(1, 'admin', '1234', 14568, 'admin', 'star', 'jr123', 'admin@gmail.com', '987532', NULL),
+(2, NULL, 'c93ccd78b2076528346216b3b2f701e6', 185364, 'admin', 'star', 'jr230', 'admin1@gmail.com', '9876257', NULL),
+(3, NULL, '81dc9bdb52d04dc20036dbd8313ed055', 980, 'admin', 'star', '123', 'admin@admin.com', '9324234', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -254,25 +298,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `auto_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `cate_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `ejemplar`
 --
 ALTER TABLE `ejemplar`
-  MODIFY `ejem_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ejem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `ejemplar_tipo`
 --
 ALTER TABLE `ejemplar_tipo`
-  MODIFY `tipo_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tipo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `peticion`
@@ -290,7 +334,7 @@ ALTER TABLE `prestamo`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usua_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `usua_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
