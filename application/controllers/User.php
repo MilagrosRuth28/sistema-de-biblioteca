@@ -86,6 +86,24 @@ function login_user(){
 
 
 }
+public function admin(){
+    $this->load->view('header.php');
+    //intente actualizar los datos de aadministrador...falta corregir
+    /*$id = $this->input->post('id');
+ 
+    $data = array(
+            'usua_login' => $this->input->post('usuario'),
+            'usua_nombres' => $this->input->post('nombres'),
+            'usua_apellidos' => $this->input->post('apellidos'),
+            'usua_direccion' => $this->input->post('direccion'),
+            'usua_email' => $this->input->post('email'),
+            'usua_codigo' => $this->input->post('codigo'),
+            'usua_password' => $this->input->post('contraseña')
+    );
+    $this->db->where('usua_id', $id);
+    $this->db->update('usuario', $data);*/
+    $this->load->view('admin/datos_admin.php');
+  }
 
 function header(){
 
