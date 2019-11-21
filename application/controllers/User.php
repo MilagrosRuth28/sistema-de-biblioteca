@@ -16,13 +16,14 @@ $this->load->view("login.php");
 public function register_user(){
 
       $user=array(
-      'usua_codigo'=>$this->input->post('usua_codigo'),
-      'usua_nombres'=>$this->input->post('usua_nombres'),
-      'usua_apellidos'=>$this->input->post('usua_apellidos'),
-      'usua_direccion'=>$this->input->post('usua_direccion'),
-      'usua_email'=>$this->input->post('usua_email'),
-      'usua_telefono'=>$this->input->post('usua_telefono'),
-      'usua_password'=>md5($this->input->post('usua_password')),
+      'usua_login'=>$this->input->post('login'),
+      'usua_codigo'=>$this->input->post('codigo'),
+      'usua_nombres'=>$this->input->post('nombres'),
+      'usua_apellidos'=>$this->input->post('apellidos'),
+      'usua_direccion'=>$this->input->post('direccion'),
+      'usua_email'=>$this->input->post('email'),
+      'usua_telefono'=>$this->input->post('telefono'),
+      'usua_password'=>md5($this->input->post('password')),
     
       
         );
