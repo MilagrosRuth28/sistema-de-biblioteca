@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2019 a las 00:01:57
--- Versión del servidor: 10.1.39-MariaDB
--- Versión de PHP: 7.1.29
+-- Tiempo de generación: 07-12-2019 a las 18:08:50
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,7 +32,7 @@ CREATE TABLE `autor` (
   `auto_id` int(11) NOT NULL,
   `auto_nombres` varchar(45) DEFAULT NULL,
   `auto_apellidos` varchar(45) DEFAULT NULL,
-  `auto_biografia` text
+  `auto_biografia` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -44,7 +44,19 @@ INSERT INTO `autor` (`auto_id`, `auto_nombres`, `auto_apellidos`, `auto_biografi
 (7, 'Nicolas', 'Taleb', 'matematicas'),
 (8, 'Nasssim', 'Taleb', 'ciencias'),
 (9, 'Joan', 'Weytand', 'matematicas'),
-(10, 'Andreano', 'Weytand', 'Logica');
+(10, 'Andreano', 'Weytand', 'Logica'),
+(11, 'Ricardo', ' Paredes Quinteros', 'Biologia'),
+(12, 'Wiliams ', 'Lopez Vega', 'Biologia'),
+(13, 'Pedro', 'Quispe Rosales', 'Biologia'),
+(14, 'Aldo', 'Trossero', 'Anatomia'),
+(15, 'Martin', 'Grandi', 'Anatomia'),
+(16, 'Celestino F.', 'Gonzales Garcia', 'Anatomia'),
+(17, 'Edmundo', 'S. Galvan', 'Anatomia'),
+(18, 'Frank H.', 'Netter', 'Anatomia'),
+(19, 'L.', 'Testut', 'Anatomia'),
+(20, 'A.', 'Latarjet', 'Anatomia'),
+(21, 'Eduardo ', 'Espinoza Ramos', 'matematica'),
+(22, 'J. Armando', 'Venero Baldeon', 'Matematicas');
 
 -- --------------------------------------------------------
 
@@ -95,7 +107,13 @@ CREATE TABLE `ejemplar` (
 --
 
 INSERT INTO `ejemplar` (`ejem_id`, `ejem_titulo`, `ejem_editorial`, `ejem_paginas`, `ejem_isbn`, `ejem_idioma`, `ejem_portada`, `ejem_digital`, `ejem_audio`, `ejem_resumen`, `ejem_tipo_id`, `ejem_cate_id`, `ejem_valoracion`, `ejem_anio`, `ejem_nprestamos`) VALUES
-(1, 'Amor y Matematicas', NULL, 340, '986540000', 'ingles y español', 'portada.jpg', NULL, NULL, 'si no eres matematico este libro te hara desearlas ', 1, 1, NULL, 2001, NULL);
+(1, 'Amor y Matematicas', NULL, 340, '986540000', 'ingles y español', 'portada.jpg', NULL, NULL, 'si no eres matematico este libro te hara desearlas ', 1, 1, NULL, 2001, NULL),
+(2, 'Atlas de Anatomia Humana', NULL, 565, '9788491134688', 'español', 'netter.jpg', NULL, NULL, 'NETTER, ATLAS DE ANATOMÍA MÉDICA 7ma EDICIÓN Nueva edición del atlas de anatomía humana concebido desde una perspectiva clínica gracias a las incomparables ilustraciones Netter y “estilo Netter\" de la mano del magnífico ilustrador, Carlos Machado. La obra', 1, 2, NULL, 2015, NULL),
+(3, 'Matematica Basica I', NULL, 682, '150105992572', 'español', 'geometria.jpg', NULL, NULL, '', 1, 1, NULL, 1996, NULL),
+(6, 'Analisis Matematico', NULL, 656, '9786034521605', 'español', 'venero.jpg', NULL, NULL, 'Matemática Básica ha sido escrito en base a los temas que son tratados en los primeros cursos de Matemáticas Universitarias en las carreras de Ingeniería, Ciencias, Economía, Administración, de modo que va dirigido a los estudiantes de estas disciplinas, ', 1, 1, NULL, 1995, NULL),
+(7, 'Biologia Anatomia', NULL, 457, '978-612-307-385-5', 'español', 'biologia-lumbreras.gif', NULL, NULL, '', 1, 2, NULL, 2015, NULL),
+(8, 'Compendio de Anatomia Descriptiva', NULL, 769, '84-345-1149-5', 'español', 'testut.jpg', NULL, NULL, '', 1, 2, NULL, 1984, NULL),
+(9, 'Ana', NULL, 779, '978-612--4160-05-9', 'español', 'espinoza.jpg', NULL, NULL, '', 1, 1, NULL, 2012, NULL);
 
 -- --------------------------------------------------------
 
@@ -113,7 +131,16 @@ CREATE TABLE `ejemplar_autor` (
 --
 
 INSERT INTO `ejemplar_autor` (`rela_auto_id`, `rela_ejem_id`) VALUES
-(6, 1);
+(6, 1),
+(11, 7),
+(12, 7),
+(13, 7),
+(18, 2),
+(19, 8),
+(20, 8),
+(21, 3),
+(21, 9),
+(22, 6);
 
 -- --------------------------------------------------------
 
@@ -298,7 +325,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -310,7 +337,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `ejemplar`
 --
 ALTER TABLE `ejemplar`
-  MODIFY `ejem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ejem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `ejemplar_tipo`
