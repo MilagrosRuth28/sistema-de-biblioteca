@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-12-2019 a las 18:08:50
+-- Tiempo de generación: 08-12-2019 a las 22:58:05
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -56,7 +56,12 @@ INSERT INTO `autor` (`auto_id`, `auto_nombres`, `auto_apellidos`, `auto_biografi
 (19, 'L.', 'Testut', 'Anatomia'),
 (20, 'A.', 'Latarjet', 'Anatomia'),
 (21, 'Eduardo ', 'Espinoza Ramos', 'matematica'),
-(22, 'J. Armando', 'Venero Baldeon', 'Matematicas');
+(22, 'J. Armando', 'Venero Baldeon', 'Matematicas'),
+(23, 'Carlos', 'Cuauhtemoc Sanchez', 'Autor mexicano, Carlos Cuauthemoc Sánchez es ingeniero Industrial en la rama de Alta Dirección de Empresas, además es catedrático en Dirección de Empresas y Ciencias Exactas. Ha colaborado en radio y televisión como experto en formación humana, y se le considera un motivador para la consecución de éxitos. Conferenciante con hábil oratoria, es también asesor de diversos organismos fundamentalmente empresariales.\r\n\r\nComenzó a escribir desde muy joven, obteniendo a los dieciocho años el Premio Nacional de Literatura en su país. Sus libros están escritos con agilidad, combinando los problemas humanos con reflexiones filosóficas. Es autor de éxito traduciéndose sus libros a varios idiomas. Además del indicado, ha obtenido diferentes premios.\r\n\r\nDe entre su prolífica obra -ha publicado más de veinte novelas- habría que destacar títulos tan conocidos como Juventud en éxtasis (sus dos partes), la serie de Sangre de campeón, El Feo o Los ojos de mi princesa, que le supuso un éxito internacional.'),
+(24, 'Jose Luis', 'Mejia', 'José Luis Mejía (Lima, 1969) es Bachiller en Derecho y Ciencias Políticas de la Universidad Nacional Mayor de San Marcos, también ha concluido sus estudios de Doctorado y Maestría en Literatura Peruana y Latinoamericana en la misma universidad. Además ha terminado sus estudios de Licenciatura en Educación en la Pontifica Universidad Católica del Perú y tiene un Diplomado en Educación y otro en Filosofía otorgados por la Universidad Anáhuac (México).\r\nEs escritor de artículos de opinión y poemas. Ha publicado libros de poesía así como textos infantiles y juveniles con editoriales como Santillana (Alfaguara) y Norma.'),
+(27, 'Becca', 'Fitzpatrick', 'Escritora americana, Becca Fitzpatrick es conocida por su libro Hush,Hush que entró en la lista de bestseller del New York Times.\r\n\r\nNació en Utah y estudió en la Universidad de Brigham Young, donde se licenció en Ciencias de la Salud en el año 2001. Fitzpatrick trabajó más tarde en diversos oficios como secretaria, maestra o contable, antes de poder dedicarse por completo a la literatura. Vive en colorado con su familia mientras sigue dedicándose a la escritura.\r\n\r\nEn el año 2003, su marido le regaló por su 24º cumpleaños un curso de Escritura Creativa, fue precisamente ahí donde comenzó a gestarse el que sería su primer gran éxito, Hush, Hush, una novela dedicada a la literatura para jóvenes adultos y que se convirtió en toda una saga de gran éxito de ventas en Estados Unidos. \r\n\r\nLa obra de Fitzpatrick ha sido traducida a numerosos idiomas y se han vendido los derechos de Hush, Hush de cara a una posible adaptación cinematográfica. Su última novela Mentiras peligrosas (2015) es un thriller juvenil lleno de tensión, misterio y romance.'),
+(28, 'Yukito ', 'Ayatsuji', 'Naoyuki Uchida (内田 直行 Uchida Naoyuki?, 23 de diciembre de 1960), también es conocido por su seudónimo de Yukito Ayatsuji (綾辻 行人 Ayatsuji Yukito?), es un escritor japonés de misterio y horror. Es uno de los fundadores del Honkaku Mystery Writers Club of Japan y es uno de los escritores más representativos del nuevo movimiento tradicional de escritura de misterio japonés.1​2​ Está casado con la también escritora Fuyumi Ono, una autora de fantasía y horror conocida por su serie fantástica The Twelve Kingdoms.3​'),
+(29, 'Hiro ', 'Kiyohara', 'Autor con nombre nativo 紘 清原, con algunas obras desarrolladas como autor completo (como Tsumitsuki y Coin Laundry no Onna, por ejemplo) y varios éxitos como dibujante.\r\n\r\nEstos son los mangas dibujados por él: Another y su continuación Another 0, la serie Bannou Kanteishi Q con todos sus derivados, Kimi ni shika Kikoenai, Kizu, Shissou Holiday, Tantei no Tantei y Tokutou Tenjouin Alpha no Nanjiken.');
 
 -- --------------------------------------------------------
 
@@ -113,7 +118,11 @@ INSERT INTO `ejemplar` (`ejem_id`, `ejem_titulo`, `ejem_editorial`, `ejem_pagina
 (6, 'Analisis Matematico', NULL, 656, '9786034521605', 'español', 'venero.jpg', NULL, NULL, 'Matemática Básica ha sido escrito en base a los temas que son tratados en los primeros cursos de Matemáticas Universitarias en las carreras de Ingeniería, Ciencias, Economía, Administración, de modo que va dirigido a los estudiantes de estas disciplinas, ', 1, 1, NULL, 1995, NULL),
 (7, 'Biologia Anatomia', NULL, 457, '978-612-307-385-5', 'español', 'biologia-lumbreras.gif', NULL, NULL, '', 1, 2, NULL, 2015, NULL),
 (8, 'Compendio de Anatomia Descriptiva', NULL, 769, '84-345-1149-5', 'español', 'testut.jpg', NULL, NULL, '', 1, 2, NULL, 1984, NULL),
-(9, 'Ana', NULL, 779, '978-612--4160-05-9', 'español', 'espinoza.jpg', NULL, NULL, '', 1, 1, NULL, 2012, NULL);
+(9, 'Ana', NULL, 779, '978-612--4160-05-9', 'español', 'espinoza.jpg', NULL, NULL, '', 1, 1, NULL, 2012, NULL),
+(10, 'Los ojos de mi princesa 2', NULL, 223, '475-854-5243-459', 'español', 'los_ojos_de_mi_princesa.jpg', NULL, NULL, 'Es una de las más bellas historias de amor de la literatura actual, nos envuelve en la trama tanto, que terminamos formando parte de los protagonistas.  José Carlos, un joven estudiante, halla en la figura de Sheccid el motivo para superar sus propias lim', 1, 3, NULL, 2012, NULL),
+(11, 'Claudia, cuídate cuando estés conmigo', NULL, 192, '987-603-4016-06-4', 'español', 'claudia-cuidate-cuando-estes-conmigo.jpg', NULL, NULL, 'Jota es un estudiante del último año de secundaria que junto a sus amigos y compañeros vive una serie de aventuras. Jota se ha ganado el apodo de “bebe” debido a que es menor y de contextura muy delgada. Esto le disgusta mucho, pero puede sobrellevarlo. J', 1, 3, NULL, 2007, NULL),
+(12, 'Hush, Hush', NULL, 300, '9-789-852-554-45-9', 'español', 'hush,_hush.jpg', NULL, NULL, '', 1, 3, NULL, 2009, NULL),
+(13, 'Another', NULL, 139, '978-0-316-24591-3', 'japones', 'another.jpg', NULL, NULL, 'En 1972, un popular y carismático estudiante llamado Misaki Yomiyama perteneciente a la clase 3-3 de la escuela Yomiyama del Norte, murió repentinamente a mitad del año escolar. Devastados por la pérdida, sus compañeros y maestro actuaron como si Misaki t', 1, 3, NULL, 2010, NULL);
 
 -- --------------------------------------------------------
 
@@ -140,7 +149,12 @@ INSERT INTO `ejemplar_autor` (`rela_auto_id`, `rela_ejem_id`) VALUES
 (20, 8),
 (21, 3),
 (21, 9),
-(22, 6);
+(22, 6),
+(23, 10),
+(24, 11),
+(27, 12),
+(28, 13),
+(29, 13);
 
 -- --------------------------------------------------------
 
@@ -325,7 +339,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -337,7 +351,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `ejemplar`
 --
 ALTER TABLE `ejemplar`
-  MODIFY `ejem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ejem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `ejemplar_tipo`
