@@ -32,7 +32,7 @@
       <th>Autores</th>
       <th>Categoria</th> 
       <th>Año</th>
-      <th>Telefono</th>
+      <th>ISBN</th>
       <th>Paginas</th>
       <th>Tipo</th>
       <th>Opciones</th>

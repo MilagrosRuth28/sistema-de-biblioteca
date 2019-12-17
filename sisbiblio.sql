@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2019 a las 20:07:58
--- Versión del servidor: 10.1.39-MariaDB
--- Versión de PHP: 7.1.29
+-- Tiempo de generación: 17-12-2019 a las 23:45:08
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,7 +32,7 @@ CREATE TABLE `autor` (
   `auto_id` int(11) NOT NULL,
   `auto_nombres` varchar(45) DEFAULT NULL,
   `auto_apellidos` varchar(45) DEFAULT NULL,
-  `auto_biografia` text
+  `auto_biografia` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -43,7 +43,24 @@ INSERT INTO `autor` (`auto_id`, `auto_nombres`, `auto_apellidos`, `auto_biografi
 (6, 'Edward', 'Frenkel', 'Ciencia'),
 (7, 'Nicolas', 'Taleb', 'matematicas'),
 (8, 'Nasssim', 'Taleb', 'ciencias'),
-(9, 'Joan', 'Weytand', 'matematicas');
+(9, 'Joan', 'Weytand', 'matematicas'),
+(10, 'Ricardo', 'Paredes Quinteros', 'Biologia'),
+(11, 'Williams', 'Lopez Vega', 'Biologia'),
+(12, 'Pedro', 'Quispe Rosales', 'Biologia'),
+(13, 'Aldo', 'Trossero', 'Anatomia'),
+(14, 'Martin ', 'Grandi', 'Anatomia'),
+(15, 'Celestino F.', 'Gonzales Garcia', 'Anatomia'),
+(16, 'Edmundo', 'S.Galvan', 'Anatomia'),
+(17, 'Frank H.', 'Netter', 'Anatomia'),
+(18, 'Leo', 'Testut', 'Anatomia'),
+(19, 'Andre', 'Latarjet', 'Anatomia'),
+(20, 'Eduardo ', 'Espinoza Ramos', 'Análisis Matemático'),
+(21, 'Jesus Armando', 'Venero Baldeon', 'Matematicas'),
+(22, 'Carlos', 'Cuauhtemoc Sanchez', 'Literatura'),
+(23, 'Jose Luis', 'Mejia', 'Literatura'),
+(24, 'Becca', 'Fitzpatrick', 'Literatura'),
+(25, 'Yukito', 'Ayatsuji', 'Naoyuki Uchida (内田 直行 Uchida Naoyuki?, 23 de diciembre de 1960), también es conocido por su seudónimo de Yukito Ayatsuji (綾辻 行人 Ayatsuji Yukito?), es un escritor japonés de misterio y horror. Es uno de los fundadores del Honkaku Mystery Writers Club of Japan y es uno de los escritores más representativos del nuevo movimiento tradicional de escritura de misterio japonés.1​2​ Está casado con la también escritora Fuyumi Ono, una autora de fantasía y horror conocida por su serie fantástica The Twelve Kingdoms.3​'),
+(26, 'Hiro', 'Kiyohara', 'Autor con nombre nativo 紘 清原, con algunas obras desarrolladas como autor completo (como Tsumitsuki y Coin Laundry no Onna, por ejemplo) y varios éxitos como dibujante.\\r\\n\\r\\nEstos son los mangas dibujados por él: Another y su continuación Another 0, la serie Bannou Kanteishi Q con todos sus derivados, Kimi ni shika Kikoenai, Kizu, Shissou Holiday, Tantei no Tantei y Tokutou Tenjouin Alpha no Nanjiken.');
 
 -- --------------------------------------------------------
 
@@ -97,7 +114,15 @@ INSERT INTO `ejemplar` (`ejem_id`, `ejem_titulo`, `ejem_editorial`, `ejem_pagina
 (1, 'Amor y Matematicas', NULL, 340, '986540000', 'ingles y español', 'portada.jpg', NULL, NULL, 'si no eres matematico este libro te hara desearlas ', 1, 1, NULL, 2001, NULL),
 (4, 'Matematicas', NULL, 340, '986540000', 'español y ingles', 'portada.jpg', NULL, NULL, 'la historia', 1, 1, NULL, 2012, NULL),
 (5, 'Amor', NULL, 340, '986540000', 'español y ingles', 'dora.jpg', NULL, NULL, 'la historia', 1, 1, NULL, 2012, NULL),
-(6, 'Amor ', NULL, 340, '986540000', 'español y ingles', 'dora.jpg', NULL, NULL, 'nose', 1, 1, NULL, 2012, NULL);
+(6, 'Amor ', NULL, 340, '986540000', 'español y ingles', 'dora.jpg', NULL, NULL, 'nose', 1, 1, NULL, 2012, NULL),
+(7, 'Atlas de Anatomia Humana', NULL, 565, '978-84-458-2607-2', 'español', 'netter.jpg', NULL, NULL, 'NETTER, ATLAS DE ANATOMÍA MÉDICA 7ma EDICIÓN Nueva edición del atlas de anatomía humana concebido desde una perspectiva clínica gracias a las incomparables ilustraciones Netter y “estilo Netter\" de la mano del magnífico ilustrador, Carlos Machado. La obra', 1, 2, NULL, 2014, NULL),
+(8, 'Analisis Matematico', NULL, 779, '978-612-4160-05-9', 'español', 'espinoza.jpg', NULL, NULL, 'En la presente obra intitulada \"Análisis Matemático I para estudiantes de Ciencias e Ingeniería\" en su sexta edición, hemos aprovechado de las numerosas y valiosos comentarios y sugerencias de mis colegas que laboran en las diversas universidades de la ca', 1, 1, NULL, 2012, NULL),
+(9, 'Compendio de Anatomia Descriptiva', NULL, 769, '84-345-1149-5', 'español', 'testut.jpg', NULL, NULL, 'No es este libro un tratado didáctico, sino, como indica su titulo, un simple resumen, lo mas sucinto posible, de las nociones de anatomía descriptiva que constituye la materia del primer examen del doctorado de Francia.', 1, 2, NULL, 1984, NULL),
+(10, 'Los ojos de mi princesa 2', NULL, 223, '475-854-5243-459', 'español', 'los_ojos_de_mi_princesa.jpg', NULL, NULL, 'Es una de las más bellas historias de amor de la literatura actual, nos envuelve en la trama tanto, que terminamos formando parte de los protagonistas.  José Carlos, un joven estudiante, halla en la figura de Sheccid el motivo para superar sus propias lim', 1, 3, NULL, 2012, NULL),
+(11, 'Claudia, cuídate cuando estés conmigo', NULL, 192, '978-603-4016-06-4', 'español', 'claudia-cuidate-cuando-estes-conmigo.jpg', NULL, NULL, 'Jota es un estudiante del último año de secundaria que junto a sus amigos y compañeros vive una serie de aventuras. Jota se ha ganado el apodo de “bebe” debido a que es menor y de contextura muy delgada. Esto le disgusta mucho, pero puede sobrellevarlo. J', 1, 3, NULL, 2007, NULL),
+(12, 'Hush, Hush', NULL, 299, '978985255445', 'español', 'hush,_hush.jpg', NULL, NULL, 'Un juramento sagrado, un ángel caído, un amor prohibido. Nora Grey es responsable y lista y nada inclinada a la temeridad. Su primer error fue enamorarse de Patch. Patch tiene un pasado que podría llamarse cualquier cosa excepto inofensivo. Lo mejor que h', 1, 3, NULL, 2009, NULL),
+(13, 'Biologia Anatomia', NULL, 457, '978-612-307-385-5', 'español', 'biologia-lumbreras.gif', NULL, NULL, 'Nueva edición actualizada que contiene 12 capítulos los cuales han sido desarrollados en relación con los temas que se solicitan en el examen de admisión.  El desarrollo del contenido teórico se muestra apoyado por imágenes y organizadores visuales con la', 1, 2, NULL, 2015, NULL),
+(14, 'Another', NULL, 139, '978-0-316-24591-3', 'japones', 'another.jpg', NULL, NULL, 'En 1972, Misaki, un popular estudiante de la clase 3-3 de la Yomiyama North Middle School, murió repentinamente a mitad de curso. Impactados por la pérdida, sus compañeros y profesores siguieron actuando como si estuviera vivo. Tal es así que incluso pudo', 1, 3, NULL, 2012, NULL);
 
 -- --------------------------------------------------------
 
@@ -119,7 +144,19 @@ INSERT INTO `ejemplar_autor` (`rela_auto_id`, `rela_ejem_id`) VALUES
 (6, 4),
 (7, 4),
 (7, 6),
-(8, 6);
+(8, 6),
+(10, 13),
+(11, 13),
+(12, 13),
+(17, 7),
+(18, 9),
+(19, 9),
+(20, 8),
+(22, 10),
+(23, 11),
+(24, 12),
+(25, 14),
+(26, 14);
 
 -- --------------------------------------------------------
 
@@ -303,7 +340,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `autor`
 --
 ALTER TABLE `autor`
-  MODIFY `auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -315,7 +352,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `ejemplar`
 --
 ALTER TABLE `ejemplar`
-  MODIFY `ejem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ejem_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `ejemplar_tipo`
