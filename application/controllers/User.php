@@ -114,7 +114,7 @@ public function admin(){
   }
   public function usuario(){
     $this->load->view('usuario/header.php');
-    //intente actualizar los datos de aadministrador...falta corregir
+    //intente actualizar los datos del usuario...falta corregir
     /*$id = $this->input->post('id');
  
     $data = array(
