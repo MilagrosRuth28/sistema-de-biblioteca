@@ -1,5 +1,5 @@
 <?php
-class Ejemplar_model extends CI_Model {
+class Categoria_model extends CI_Model {
 
     public function __construct()
     {
@@ -27,5 +27,10 @@ class Ejemplar_model extends CI_Model {
         }
 
     }
-    
-}
+   public function resultado($valor){
+
+        return $this->db->like('cate_id',$valor)
+                        ->get('categoria')
+                        ->result();
+                }   
+    }

@@ -2,6 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends CI_Controller {
 
+          //! IMPORTANTE: ALGUNOS CODIGOS QUE ESTAN COMENTADOS ELIMINALOS SI QUIERES, YA QUE NO SE USA O NO SIRVE Xd
+  
 public function __construct()
 {
     parent::__construct();
@@ -15,16 +17,16 @@ $this->load->view("login.php");
 }
 public function register_user(){
 
+      //! ESTO ESTA CAMBIADO EN EL TRABAJO QUE ESTA EN EL github
       $user=array(
-      'usua_login'=>$this->input->post('login'),
-      'usua_codigo'=>$this->input->post('codigo'),
-      'usua_nombres'=>$this->input->post('nombres'),
-      'usua_apellidos'=>$this->input->post('apellidos'),
-      'usua_direccion'=>$this->input->post('direccion'),
-      'usua_email'=>$this->input->post('email'),
-      'usua_telefono'=>$this->input->post('telefono'),
-      'usua_password'=>md5($this->input->post('password')),
-    
+      'usua_codigo'=>$this->input->post('usua_codigo'),     
+      'usua_nombres'=>$this->input->post('usua_nombres'),
+      'usua_apellidos'=>$this->input->post('usua_apellidos'),
+      'usua_direccion'=>$this->input->post('usua_direccion'),
+      'usua_email'=>$this->input->post('usua_email'),
+      'usua_telefono'=>$this->input->post('usua_telefono'),
+      'usua_password'=>md5($this->input->post('usua_password')),
+      //'usua_esadmin'=>$this->input->post('usua_esadmin'),
       
         );
         print_r($user);
@@ -39,8 +41,9 @@ if($email_check){
 }
 else{
 
-  $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-  redirect('usuario');
+  /*$this->session->set_flashdata('error_msg', '<div class="alert alert-danger h6 role="alert">Error occured,Try again.</div>');*/
+  $this->session->set_flashdata('error_msg', '<h6 style="background-color:red;">Error occured</h6>');
+  redirect('user/register_user');
 
 
 }
@@ -63,32 +66,36 @@ function login_volverLogin(){
 }
 
 
-function login_user(){
-  $user_login=array(
-
-  'usua_email'=>$this->input->post('usua_email'),
-  'usua_password'=>md5($this->input->post('usua_password')),
-    );
-
-    $data=$this->user_model->login_user($user_login['usua_email'],$user_login['usua_password']);
-      if($data)
-    {
-        $this->session->set_userdata('usua_id',$data['usua_id']);
-        $this->session->set_userdata('usua_email',$data['usua_email']);
-        $this->session->set_userdata('usua_password',$data['usua_password']);
-        $this->load->view('header.php');
-
-    }
-      else{
-        $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-        $this->load->view("login.php");
-
+function login_user(){ 
+  $usua_email=$this->input->post('usua_email', TRUE); 
+  $usua_password=$this->input->post('usua_password', TRUE);
+  $res=$this->user_model->login_user($usua_email,$usua_password);
+      if($res->num_rows() > 0){
+        $data = $res->row_array();
+        $usua_codigo = $data['usua_codigo'];
+        $usua_email = $data['usua_email'];
+        $usua_esadmin = $data['usua_esadmin'];
+        $sesdata = array(
+          'usua_codigo' =>$usua_codigo,
+          'usua_email'  => $usua_email,
+          'usua_esadmin'=> $usua_esadmin,
+          'logged_in'   => TRUE 
+        );
+        $this->session->set_userdata($sesdata);
+        if($usua_esadmin == '1'){ 
+          redirect('administrador');      //! VA A LA class 'administrador' ->Esta class la encuentras en controllers/Administrador.php
+        }else if($usua_esadmin == '0'){   
+          redirect('usuario');            //! VA A LA class 'usuario' ->Esta class la encuentras en controllers/Usuario.php
+        }
+      }else{
+        $this->session->set_flashdata('error_msg', '<h3 style="color:red;">Datos Incorrectos</h3>');
+        //$this->load->view("login.php");
+        redirect(base_url());        //! PARA REDIRECCIONARLO AL MISMO SITIO, YA QUE LOS DATOS INGRESADOS ESTAN MAL, O NO SE ENCUENTRA EL LA BASE DE DATOS  xD
       }
-
 
 }
 public function admin(){
-    $this->load->view('header.php');
+    $this->load->view('administrador/header.php');
     //intente actualizar los datos de aadministrador...falta corregir
     /*$id = $this->input->post('id');
  
@@ -103,10 +110,11 @@ public function admin(){
     );
     $this->db->where('usua_id', $id);
     $this->db->update('usuario', $data);*/
-    $this->load->view('admin/datos_admin.php');
+    $this->load->view('administrador/datos_admin.php');
   }
 
-function header(){
+public function menu()      //! ESTA FUNCION LA ELIMINASTE EN EL QUE AHORA ESTA EN EL github
+{
 
 $this->load->view('header.php');
 

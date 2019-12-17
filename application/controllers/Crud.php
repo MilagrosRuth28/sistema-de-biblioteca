@@ -40,17 +40,17 @@ public function index()
         redirect("Crud");
     }
     public function cate(){
-    $data['categoria'] = $this->db->query("SELECT *  FROM ejemplar,categoria where ejem_cate_id=cate_id")->result();
+    $data['resultado'] = $this->db->query("SELECT *  FROM ejemplar,categoria where ejem_cate_id=cate_id")->result();
     $this->load->view("header.php");
-    $this->load->view("categoria/categoria.php", $data);
+    $this->load->view("categoria/categoria", $data);
     
   }
   public function BuscarLibro(){
-    
-    $q=$_POST['q'];
-    $data['categoria'] = $this->db->query("SELECT *  FROM ejemplar,categoria where ejem_cate_id=cate_id")->result();
-    $this->load->view('categoria/categoria.php');
-    $data = $this->Categoria_model->getBusqueda($q);
+    $valor = $this->input->post('valor');
+        $datos['resultado'] = $this->Categoria_model->resultado($valor);
+        $this->load->view('categoria/categoria',$datos);
+        
     }
 }
+
 ?>

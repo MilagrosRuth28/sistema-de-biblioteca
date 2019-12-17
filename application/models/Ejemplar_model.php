@@ -20,7 +20,7 @@ class Ejemplar_model extends CI_Model {
 
     function Update($id)
     {
-        $query = $this->db->get_where('ejemplar', array('ejem_id' => $id));
+        $query = $this->db->get_where('ejemplar', array('ejem_id' => $id) AND 'ejemplar', $data);
         return $query->row();
     }
 
@@ -32,7 +32,7 @@ class Ejemplar_model extends CI_Model {
         if (empty($id)) {
             return $this->db->insert('ejemplar', $data);
         } else {
-            $this->db->where('ejem_id', $id);
+           return $this->db->where('ejem_id', $id);
             return $this->db->update('ejemplar', $data);
         }
     }

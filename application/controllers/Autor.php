@@ -12,7 +12,7 @@ class Autor extends CI_Controller {
   
     public function index()
     {
-        $this->load->view('header');
+        $this->load->view('administrador/header');
         $data['autores'] = $this->Autor_model->notes_list();
         $data['titulo'] = 'Listado';
  
@@ -21,9 +21,9 @@ class Autor extends CI_Controller {
   
     public function crear()
     {
-        $this->load->view('header');
+        $this->load->view('administrador/header');
         $data['titulo'] = 'Crear Autor';
-        $this->load->view('autores/crear_autor', $data);
+        $this->load->view('administrador/autores/crear_autor', $data);
     }
       
     public function editar($id)
@@ -35,9 +35,9 @@ class Autor extends CI_Controller {
         { 
          show_404();
         }else{
-          $this->load->view('header');
+          $this->load->view('administrador/header');
           $data['autor'] = $this->Autor_model->get_notes_by_id($id);
-          $this->load->view('autores/editar_autor', $data);
+          $this->load->view('administrador/autores/editar_autor', $data);
         }
     }
     public function validaciones()
@@ -51,10 +51,10 @@ class Autor extends CI_Controller {
         if ($this->form_validation->run() === FALSE)
         {  
             if(empty($id)){
-              redirect( base_url('Autor/crear') ); 
+              redirect( base_url('administrador/Autor/crear') ); 
 
             }else{
-             redirect( base_url('Autor/editar/'.$id) ); 
+             redirect( base_url('administrador/Autor/editar/'.$id) ); 
             }
         }
         else
