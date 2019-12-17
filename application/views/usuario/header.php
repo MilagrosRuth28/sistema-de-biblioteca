@@ -119,7 +119,7 @@ if(!$usua_id){
 
               <!-- Nav Item - Tables -->
               <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="<?php echo base_url(); ?>User/usuario">
                   <i class="fas fa-user"></i>
                   <span>Datos del Usuario</span></a>
                 </li>
