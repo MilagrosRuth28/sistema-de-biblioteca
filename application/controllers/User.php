@@ -112,28 +112,7 @@ public function admin(){
     $this->db->update('usuario', $data);*/
     $this->load->view('administrador/datos_admin.php');
   }
-  public function usuario(){
-    $this->load->view('usuario/header.php');
-<<<<<<< HEAD
-    //intente actualizar los datos de aadministrador...falta corregir
-=======
-    //intente actualizar los datos del usuario...falta corregir
->>>>>>> 99b2a9332b93648c221cb4d925baa15f7a1a98b7
-    /*$id = $this->input->post('id');
- 
-    $data = array(
-            'usua_login' => $this->input->post('usuario'),
-            'usua_nombres' => $this->input->post('nombres'),
-            'usua_apellidos' => $this->input->post('apellidos'),
-            'usua_direccion' => $this->input->post('direccion'),
-            'usua_email' => $this->input->post('email'),
-            'usua_codigo' => $this->input->post('codigo'),
-            'usua_password' => $this->input->post('contraseña')
-    );
-    $this->db->where('usua_id', $id);
-    $this->db->update('usuario', $data);*/
-    $this->load->view('usuario/datos_usuario.php');
-  }
+
 public function menu()      //! ESTA FUNCION LA ELIMINASTE EN EL QUE AHORA ESTA EN EL github
 {
 

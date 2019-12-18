@@ -27,10 +27,10 @@ class Categoria_model extends CI_Model {
         }
 
     }
-   public function resultado($valor){
-
-        return $this->db->like('cate_id',$valor)
-                        ->get('categoria')
+   public function resultado($buscar){
+        return $this->db->like('ejem_titulo',$buscar)
+                        ->get('ejemplar')
                         ->result();
                 }   
-    }
+    
+}

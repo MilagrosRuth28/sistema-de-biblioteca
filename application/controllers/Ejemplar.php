@@ -108,7 +108,7 @@ class Ejemplar extends CI_Controller {
     $this->db->insert('ejemplar_autor',array('rela_auto_id'=>$autor,'rela_ejem_id'=>$id));
 }
 
-redirect( base_url('Ejemplar/administrador/ejemplar') ); 
+redirect( base_url('Ejemplar/ejemplar') ); 
 }
 
 public function upload_PortEdit()
@@ -158,7 +158,7 @@ public function upload_PortEdit()
    foreach($autores as $autor){
     $this->db->insert('ejemplar_autor',array('rela_auto_id'=>$autor,'rela_ejem_id'=>$id));
 }
-redirect( base_url('Ejemplar/administrador/ejemplar') ); 
+redirect( base_url('Ejemplar/ejemplar') ); 
 }
 
 public function crear()

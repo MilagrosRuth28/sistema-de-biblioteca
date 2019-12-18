@@ -1,12 +1,6 @@
 <?php
-$usua_id=$this->session->userdata('usua_id');
-
-if(!$usua_id){
-
-  redirect('user/login_view');
-}
-
- ?>
+    $metodo=$this->router->fetch_method();
+?>
 
 
 <!DOCTYPE html>

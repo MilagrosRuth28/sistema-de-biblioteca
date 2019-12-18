@@ -39,18 +39,19 @@ public function index()
         $this->Crud_model->deleteData($id);
         redirect("Ejemplar_usuario");
     }
+    
     public function cate(){
-    $data['resultado'] = $this->db->query("SELECT *  FROM ejemplar,categoria where ejem_cate_id=cate_id")->result();
-    $this->load->view("usuario/header");
-    $this->load->view("usuario/categoria", $data);
+    $data['categoria'] = $this->db->query("SELECT *  FROM ejemplar,categoria where ejem_cate_id=cate_id")->result();
+    $this->load->view("usuario/header.php",$data);
+    $this->load->view("usuario/categoria.php", $data);
     
   }
-  public function BuscarLibro(){
-        $this->load->view('usuario/header');
-        $valor = $this->input->post('valor'); 
-        $datos['resultado'] = $this->Categoria_model->resultado($valor);
+    public function BuscarLibro(){
+    $buscar = $this->input->post('buscar');
+        $datos['resultado'] = $this->Categoria_model->resultado($buscar);
+        $this->load->view("usuario/header.php",$datos);
         $this->load->view('usuario/categoria',$datos);
-       
+        
     }
 }
 
