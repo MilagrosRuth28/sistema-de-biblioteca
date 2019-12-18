@@ -19,7 +19,7 @@ class Ejemplar_model extends CI_Model {
     }
     function lista_peticion()
     {   
-        //ayuda
+        return $this->db->query("SELECT * FROM peticion,ejemplar,usuario WHERE peti_ejem_id=ejem_id AND peti_usua_id=usua_id")->result();
     }
     function lista_prestamo()
     {   
@@ -28,7 +28,7 @@ class Ejemplar_model extends CI_Model {
 
     function Update($id)
     {
-        $query = $this->db->get_where('ejemplar', array('ejem_id' => $id) AND 'ejemplar', $data);
+        $query = $this->db->get_where('ejemplar', array('ejem_id' => $id));
         return $query->row();
     }
 

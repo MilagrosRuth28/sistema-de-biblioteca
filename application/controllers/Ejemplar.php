@@ -161,6 +161,19 @@ public function upload_PortEdit()
 redirect( base_url('Ejemplar/ejemplar') ); 
 }
 
+public function get($id){
+    $row = $this->Ejemplar_model->update($id);
+    echo json_encode($row);
+}
+
+public function pedir(){
+    $ide = $this->input->post('ide');
+    $idu = $this->session->userdata('usua_id');
+    
+    $this->db->query("INSERT INTO peticion(peti_ejem_id,peti_usua_id,peti_fechareg) 
+        VALUES('{$ide}','{$idu}',NOW())");
+}
+
 public function crear()
 {
     $this->load->view('administrador/header');

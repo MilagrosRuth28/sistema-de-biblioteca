@@ -72,10 +72,11 @@ function login_user(){
   $res=$this->user_model->login_user($usua_email,$usua_password);
       if($res->num_rows() > 0){
         $data = $res->row_array();
-        $usua_codigo = $data['usua_codigo'];
+        $usua_id = $data['usua_id'];
         $usua_email = $data['usua_email'];
         $usua_esadmin = $data['usua_esadmin'];
         $sesdata = array(
+          'usua_id' =>$usua_id,
           'usua_codigo' =>$usua_codigo,
           'usua_email'  => $usua_email,
           'usua_esadmin'=> $usua_esadmin,
@@ -111,6 +112,24 @@ public function admin(){
     $this->db->where('usua_id', $id);
     $this->db->update('usuario', $data);*/
     $this->load->view('administrador/datos_admin.php');
+  }
+  public function usuario(){
+    $this->load->view('usuario/header.php');
+    //intente actualizar los datos de aadministrador...falta corregir
+    /*$id = $this->input->post('id');
+ 
+    $data = array(
+            'usua_login' => $this->input->post('usuario'),
+            'usua_nombres' => $this->input->post('nombres'),
+            'usua_apellidos' => $this->input->post('apellidos'),
+            'usua_direccion' => $this->input->post('direccion'),
+            'usua_email' => $this->input->post('email'),
+            'usua_codigo' => $this->input->post('codigo'),
+            'usua_password' => $this->input->post('contraseña')
+    );
+    $this->db->where('usua_id', $id);
+    $this->db->update('usuario', $data);*/
+    $this->load->view('usuario/datos_usuario.php');
   }
 
 public function menu()      //! ESTA FUNCION LA ELIMINASTE EN EL QUE AHORA ESTA EN EL github

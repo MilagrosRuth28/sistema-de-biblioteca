@@ -25,7 +25,7 @@
           <?php if($peticion): ?>
           <?php foreach($peticion as $peti): ?>
           <tr>
-             <td><?php echo $peti->peti_ejem_id; ?></td>
+             <td><?php echo $peti->ejem_titulo; ?></td>
              <td><?php echo $peti->peti_dias; ?></td>
              <td>
               <div class="dropdown">

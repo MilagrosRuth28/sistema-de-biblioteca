@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-12-2019 a las 23:45:08
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 18-12-2019 a las 14:49:50
+-- Versión del servidor: 10.1.39-MariaDB
+-- Versión de PHP: 7.1.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,7 +32,7 @@ CREATE TABLE `autor` (
   `auto_id` int(11) NOT NULL,
   `auto_nombres` varchar(45) DEFAULT NULL,
   `auto_apellidos` varchar(45) DEFAULT NULL,
-  `auto_biografia` text DEFAULT NULL
+  `auto_biografia` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -215,6 +215,14 @@ CREATE TABLE `peticion` (
   `peti_fechareg` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `peticion`
+--
+
+INSERT INTO `peticion` (`peti_id`, `peti_ejem_id`, `peti_dias`, `peti_usua_id`, `peti_fechareg`) VALUES
+(4, 1, NULL, 6, '2019-12-18 08:20:51'),
+(5, 1, NULL, 6, '2019-12-18 08:20:56');
+
 -- --------------------------------------------------------
 
 --
@@ -364,7 +372,7 @@ ALTER TABLE `ejemplar_tipo`
 -- AUTO_INCREMENT de la tabla `peticion`
 --
 ALTER TABLE `peticion`
-  MODIFY `peti_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `peti_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo`
