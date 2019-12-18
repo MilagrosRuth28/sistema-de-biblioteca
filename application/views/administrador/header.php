@@ -61,7 +61,7 @@ if(!$usua_id){
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ejemplar">
+        <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ejemplar/vista">
           <i class="fas fa-fw fa-tachometer-alt" ></i>
           <span>Vista General</span></a>
         </li>
@@ -100,7 +100,7 @@ if(!$usua_id){
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href="<?php echo base_url(); ?>Ejemplar/provar" >
+          <a class="nav-link collapsed" href="<?php echo base_url(); ?>Ejemplar/peticiones" >
             <i class="fas fa-book"></i>
             <span>Peticiones del Libro</span>
           </a>
@@ -108,7 +108,7 @@ if(!$usua_id){
         </li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" >
+          <a class="nav-link collapsed" href="<?php echo base_url(); ?>Ejemplar/prestamos" >
             <i class="fas fa-book-dead"></i>
             <span>Libros prestados</span>
           </a>

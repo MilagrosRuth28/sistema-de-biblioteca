@@ -13,7 +13,7 @@ class Ejemplar extends CI_Controller {
     public function index()
     {
         $this->load->view('header'); 
-        $this->load->view('portada'); 
+        $this->load->view('administrador/vista'); 
         $this->load->view('Pie');
     }
     /* public function portada()
@@ -22,6 +22,32 @@ class Ejemplar extends CI_Controller {
         $this->load->view('', $data);
         $this->load->view('Pie');
     }*/
+    public function vista()
+    {//creo q esta funcion es redundante, 
+
+        $this->load->view('administrador/header');
+        $data['titulo'] = 'vista General';
+        $this->load->view('administrador/vista', $data);
+        $this->load->view('Pie');
+    }
+    public function peticiones()
+    {
+
+        $this->load->view('administrador/header');
+        $data['peticion'] = $this->Ejemplar_model->lista_peticion();
+        $data['titulo'] = 'peticiones de libros';
+        $this->load->view('administrador/peticion', $data);
+        $this->load->view('Pie');
+    }
+    public function prestamos()
+    {
+
+        $this->load->view('administrador/header');
+        $data['prestamo'] = $this->Ejemplar_model->lista_prestamo();
+        $data['titulo'] = 'prestamos de libros';
+        $this->load->view('administrador/prestamo', $data);
+        $this->load->view('Pie');
+    }
     public function ejemplar()
     {
 

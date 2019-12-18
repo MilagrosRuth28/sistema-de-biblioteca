@@ -17,6 +17,14 @@ class Ejemplar_model extends CI_Model {
         /*$query = $this->db->query('select * from ejemplar, categoria where ejem_cate_id = cate_id');
         return $query->result();*/
     }
+    function lista_peticion()
+    {   
+        //ayuda
+    }
+    function lista_prestamo()
+    {   
+        //ayuda
+    }
 
     function Update($id)
     {
