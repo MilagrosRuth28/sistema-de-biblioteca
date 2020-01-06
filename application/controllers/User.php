@@ -14,6 +14,7 @@ public function __construct()
 public function index()
 {
 $this->load->view("login.php");
+
 }
 public function register_user(){
 
@@ -97,40 +98,18 @@ function login_user(){
 }
 public function admin(){
     $this->load->view('administrador/header.php');
-    //intente actualizar los datos de aadministrador...falta corregir
-    /*$id = $this->input->post('id');
+    $data['datos'] = $this->User_model->get_datos_by_id($this->session->userdata('usua_id'));
+    $data['titulo'] = 'datos usuario';
  
-    $data = array(
-            'usua_login' => $this->input->post('usuario'),
-            'usua_nombres' => $this->input->post('nombres'),
-            'usua_apellidos' => $this->input->post('apellidos'),
-            'usua_direccion' => $this->input->post('direccion'),
-            'usua_email' => $this->input->post('email'),
-            'usua_codigo' => $this->input->post('codigo'),
-            'usua_password' => $this->input->post('contraseña')
-    );
-    $this->db->where('usua_id', $id);
-    $this->db->update('usuario', $data);*/
-    $this->load->view('administrador/datos_admin.php');
-  }
-  public function usuario(){
+    $this->load->view('administrador/datos_admin', $data);
+    //$this->load->view('administrador/datos_admin.php');
+}
+public function usuario(){
     $this->load->view('usuario/header.php');
-    //intente actualizar los datos de aadministrador...falta corregir
-    /*$id = $this->input->post('id');
- 
-    $data = array(
-            'usua_login' => $this->input->post('usuario'),
-            'usua_nombres' => $this->input->post('nombres'),
-            'usua_apellidos' => $this->input->post('apellidos'),
-            'usua_direccion' => $this->input->post('direccion'),
-            'usua_email' => $this->input->post('email'),
-            'usua_codigo' => $this->input->post('codigo'),
-            'usua_password' => $this->input->post('contraseña')
-    );
-    $this->db->where('usua_id', $id);
-    $this->db->update('usuario', $data);*/
-    $this->load->view('usuario/datos_usuario.php');
-  }
+    $data['datos'] = $this->User_model->get_datos_by_id($this->session->userdata('usua_id'));
+    $data['titulo'] = 'datos usuario';
+    $this->load->view('usuario/datos_usuario.php', $data);
+}
 
 public function menu()      //! ESTA FUNCION LA ELIMINASTE EN EL QUE AHORA ESTA EN EL github
 {

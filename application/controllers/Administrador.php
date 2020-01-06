@@ -20,6 +20,7 @@ public function __construct()
   	function index(){
 		if($this->session->userdata('usua_esadmin')==='1'){
 			$this->load->view('administrador/header');
+			$this->load->view("administrador/vista");
 			//$this->load->view('Administrador/header',$datos);
 			
 			//$this->load->view('header');

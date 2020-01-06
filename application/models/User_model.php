@@ -33,6 +33,12 @@ public function email_check($email){
   }
 
 }
+public function get_datos_by_id($id)
+    {
+        $query = $this->db->get_where('usuario', array('usua_id' => $id));
+        
+        return $query->row();
+    }
 
 
 }
