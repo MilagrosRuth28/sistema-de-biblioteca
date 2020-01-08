@@ -53,7 +53,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ejemplar_usuario/index">
+        <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ejemplar_usuario/portada">
           <i class="fas fa-fw fa-tachometer-alt" ></i>
           <span>Vista General</span></a>
         </li>
@@ -77,10 +77,11 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href="<?php echo base_url(); ?>index.php/" >
+          <a class="nav-link collapsed" href="<?php echo base_url(); ?>portadas/" >
             <i class="far fa-id-badge"></i>
             <span>Libros Prestados</span>
           </a>
+          
         </li>
 
         <!-- Divider -->

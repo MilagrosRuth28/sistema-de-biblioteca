@@ -17,7 +17,7 @@
           <tr>
              <th>Libros</th>
              <th>Fecha</th>
-             <th>Observacion</th>
+             <th>Dias</th>
              <th>Opciones</th>
           </tr>
        </thead>
@@ -26,6 +26,7 @@
           <?php foreach($peticion as $peti): ?>
           <tr>
              <td><?php echo $peti->ejem_titulo; ?></td>
+             <td><?php echo $peti->peti_fechareg; ?></td>
              <td><?php echo $peti->peti_dias; ?></td>
              <td></td>
              <td>

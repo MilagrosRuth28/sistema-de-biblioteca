@@ -54,6 +54,7 @@ public function index()
         $this->load->view('usuario/categoria',$datos);
         
     }
+<<<<<<< HEAD
     ///////////////falta :v
     public function historial()
     {
@@ -75,6 +76,14 @@ public function index()
 }
     
     
+=======
+    public function Portada(){
+        $datos['resultado'] = $this->Categoria_model->obtiene_ejemplar();
+        $this->load->view('usuario/header',$datos);
+         $this->load->view('usuario/portadas', $datos);
+         $this->load->view('usuario/Pie');
+    }
+>>>>>>> a6811131af5d0fbceb071b63a2a6be743ab824ef
 }
 
 ?>
