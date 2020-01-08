@@ -8,7 +8,7 @@ public function __construct()
 {
     parent::__construct();
         $this->load->helper('url');
-        $this->load->model('user_model');
+        $this->load->model('User_model');
         $this->load->library('session');
 }
 public function index()
@@ -32,10 +32,10 @@ public function register_user(){
         );
         print_r($user);
 
-$email_check=$this->user_model->email_check($user['usua_email']);
+$email_check=$this->User_model->email_check($user['usua_email']);
 
 if($email_check){
-  $this->user_model->register_user($user);
+  $this->User_model->register_user($user);
   $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
   redirect('user/login_view');
 
@@ -70,7 +70,7 @@ function login_volverLogin(){
 function login_user(){ 
   $usua_email=$this->input->post('usua_email', TRUE); 
   $usua_password=$this->input->post('usua_password', TRUE);
-  $res=$this->user_model->login_user($usua_email,$usua_password);
+  $res=$this->User_model->login_user($usua_email,$usua_password);
       if($res->num_rows() > 0){
         $data = $res->row_array();
         $usua_id = $data['usua_id'];
@@ -110,6 +110,16 @@ public function usuario(){
     $data['titulo'] = 'datos usuario';
     $this->load->view('usuario/datos_usuario.php', $data);
 }
+  public function validaciones_admin(){
+
+            $data['datos'] = $this->User_model->actualizar();
+              redirect('User/Admin');            //! VA A LA class 'usuario' ->Esta class la encuentras en controllers/Usuario.php
+  }
+   public function validaciones_usua(){
+
+            $data['datos'] = $this->User_model->actualizar();
+              redirect('User/Usuario');      //! VA A LA class 'administrador' ->Esta class la encuentras en controllers/Administrador.php
+  }
 
 public function menu()      //! ESTA FUNCION LA ELIMINASTE EN EL QUE AHORA ESTA EN EL github
 {

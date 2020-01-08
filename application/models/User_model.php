@@ -39,6 +39,27 @@ public function get_datos_by_id($id)
         
         return $query->row();
     }
+public function actualizar()
+    {
+        $this->load->helper('url');
+        $id = $this->input->post('id');
+ 
+        $data = array(
+            'usua_nombres' => $this->input->post('nombre'),
+            'usua_apellidos' => $this->input->post('apellidos'),
+            'usua_direccion' => $this->input->post('direccion'),
+            'usua_email' => $this->input->post('email'),
+            'usua_telefono' => $this->input->post('Telefono'),
+            'usua_login' => $this->input->post('usuario'),
+            'usua_password' => $this->input->post('Contraseña')
+        );
+        if (empty($id)) {
+            return $this->db->insert('usuario', $data);
+        } else {
+            $this->db->where('usua_id', $id);
+            return $this->db->update('usuario', $data);
+        }
+    }
 
 
 }

@@ -18,6 +18,7 @@
              <th>Libros</th>
              <th>Fecha</th>
              <th>Dias</th>
+             <th>Observacion</th>
              <th>Opciones</th>
           </tr>
        </thead>
