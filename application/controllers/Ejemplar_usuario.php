@@ -53,6 +53,12 @@ public function index()
         $this->load->view('usuario/categoria',$datos);
         
     }
+    public function Portada(){
+        $datos['resultado'] = $this->Categoria_model->obtiene_ejemplar();
+        $this->load->view('usuario/header',$datos);
+         $this->load->view('usuario/portadas', $datos);
+         $this->load->view('usuario/Pie');
+    }
 }
 
 ?>

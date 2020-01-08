@@ -31,6 +31,14 @@ class Categoria_model extends CI_Model {
         return $this->db->like('ejem_titulo',$buscar)
                         ->get('ejemplar')
                         ->result();
-                }   
+                }  
+    public function obtiene_ejemplar(){
+        $this->db->select('*');
+        $this->db->from('ejemplar_autor');
+        $this->db->join('ejemplar', 'ejemplar.ejem_id = ejemplar_autor.rela_ejem_id');
+        $this->db->join('autor', 'autor.auto_id = ejemplar_autor.rela_auto_id');
+        $query = $this->db->get();
+        return $query->result();
+    } 
     
 }
