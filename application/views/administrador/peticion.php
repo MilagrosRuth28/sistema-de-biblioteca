@@ -27,6 +27,7 @@
           <tr>
              <td><?php echo $peti->ejem_titulo; ?></td>
              <td><?php echo $peti->peti_dias; ?></td>
+             <td></td>
              <td>
               <div class="dropdown">
                 <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Accion

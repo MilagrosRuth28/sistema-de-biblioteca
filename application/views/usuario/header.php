@@ -101,7 +101,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#" >
+          <a class="nav-link" href="<?php echo base_url(); ?>index.php/Ejemplar_usuario/historial" >
             <i class="fas fa-fw fa-table"></i>
             <span>Historial de Busqueda</span></a>
           </li>

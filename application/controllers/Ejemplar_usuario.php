@@ -8,6 +8,7 @@ public function __construct()
     parent::__construct();
         $this->load->helper('url');
         $this->load->model('Categoria_model');
+        $this->load->model('Ejemplar_model');
 }
 
 
@@ -53,6 +54,27 @@ public function index()
         $this->load->view('usuario/categoria',$datos);
         
     }
+    ///////////////falta :v
+    public function historial()
+    {
+        $this->load->view('usuario/header');
+        $data['ejemplares'] = $this->Ejemplar_model->lista_historial();        
+        $this->load->view('usuario/historial', $data);
+        
+    }
+    public function eliminar_histo()
+{
+    $id = $this->uri->segment(3);
+    
+    if (empty($id))
+    {
+        show_404();
+    }
+    $ejemplares = $this->Ejemplar_model->delete($id);
+    redirect( base_url('Ejemplar_usuario/usuario/historial') );        
+}
+    
+    
 }
 
 ?>

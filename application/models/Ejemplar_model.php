@@ -17,6 +17,12 @@ class Ejemplar_model extends CI_Model {
         /*$query = $this->db->query('select * from ejemplar, categoria where ejem_cate_id = cate_id');
         return $query->result();*/
     }
+    function lista_historial()
+    {   
+        ////////aqui va la base de datos aiuda :v esta la de ejemplares por ahora....
+        $query = $this->db->query('SELECT ejem_titulo, cate_nombre, tipo_nombre, ejem_id, GROUP_CONCAT(auto_nombres)as auto_nombres, ejem_portada FROM ejemplar,categoria,ejemplar_tipo,ejemplar_autor, autor WHERE ejem_cate_id=cate_id AND ejem_tipo_id=tipo_id AND ejem_id=rela_ejem_id AND rela_auto_id=auto_id GROUP BY ejem_id ORDER BY ejem_id DESC');
+        return $query->result();        
+    }
     function lista_peticion()
     {   
         return $this->db->query("SELECT * FROM peticion,ejemplar,usuario WHERE peti_ejem_id=ejem_id AND peti_usua_id=usua_id")->result();
@@ -24,7 +30,7 @@ class Ejemplar_model extends CI_Model {
     function lista_prestamo()
     {   
         //ayuda
-    }
+    }  
 
     function Update($id)
     {
@@ -69,6 +75,8 @@ class Ejemplar_model extends CI_Model {
         return $this->db->delete('ejemplar', array('ejem_id' => $id)); 
         /*? true : 
         false;*/
-    }   
+    }    
+    
+	
 
 }

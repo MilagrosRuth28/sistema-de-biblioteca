@@ -57,8 +57,7 @@ class Ejemplar extends CI_Controller {
         $this->load->view('administrador/ejemplar/lista', $data);
         $this->load->view('Pie');
     }
-
-
+    
     public function upload_Port()
     {
         $this->form_validation->set_rules('titulo', 'titulo', 'required');
@@ -220,5 +219,6 @@ public function eliminar()
     $ejemplares = $this->Ejemplar_model->delete($id);
     redirect( base_url('Ejemplar/administrador/ejemplar') );        
 }
+
 
 }
